@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
+import { openQuoteDialog } from "@/components/QuoteDialog";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,12 +60,13 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <LanguageSwitcher dark={scrolled} />
-          <a
-            href="#cotizar"
+          <button
+            type="button"
+            onClick={openQuoteDialog}
             className="hidden md:inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
           >
             {t("cta.quote")}
-          </a>
+          </button>
           <button
             onClick={() => setOpen((v) => !v)}
             className={`lg:hidden grid place-items-center h-10 w-10 rounded-md ${
@@ -90,13 +92,16 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <a
-              href="#cotizar"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openQuoteDialog();
+              }}
               className="mt-3 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
             >
               {t("cta.quote")}
-            </a>
+            </button>
           </div>
         </div>
       )}
