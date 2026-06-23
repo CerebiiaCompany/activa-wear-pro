@@ -225,8 +225,9 @@ function Index() {
                 Una trayectoria construida prenda a prenda.
               </h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                Más de una década perfeccionando el arte de la dotación empresarial,
-                con un equipo humano dedicado a vestir organizaciones de todos los sectores.
+                Activa Uniformes nació del sueño de <strong className="text-foreground">María de la Paz Parada</strong>,
+                una emprendedora nortesantandereana con visión de futuro y un liderazgo comprometido con la calidad,
+                el servicio y la cercanía con cada cliente.
               </p>
               <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
                 <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-80 object-cover" />
@@ -242,9 +243,10 @@ function Index() {
                 </h3>
                 <ol className="relative border-l-2 border-border space-y-8 pl-8">
                   {[
-                    { y: "2008", t: "Inicio de la formación profesional." },
-                    { y: "2014", t: "Nacimiento oficial de Activa Uniformes." },
-                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander y en crecimiento nacional." },
+                    { y: "2008", t: "María de la Paz Parada inicia su sueño emprendedor y se forma en confección industrial en el SENA." },
+                    { y: "2010–2014", t: "Cuatro años de experiencia laboral y formación continua, perfeccionando conocimientos y visión empresarial." },
+                    { y: "2014", t: "Formalización oficial de Activa Uniformes, con el respaldo de su familia y un equipo creciente." },
+                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander por su calidad, puntualidad y atención personalizada." },
                   ].map((m) => (
                     <li key={m.y} className="relative">
                       <span className="absolute -left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
@@ -264,9 +266,9 @@ function Index() {
                   Misión
                 </h3>
                 <p className="text-foreground/85 leading-relaxed">
-                  Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
+                  "Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
                   funcionalidad y estilo, con un compromiso firme por la calidad, la innovación y la cercanía
-                  con nuestros clientes.
+                  con nuestros clientes."
                 </p>
               </div>
             </Reveal>
@@ -277,8 +279,8 @@ function Index() {
                   Visión
                 </h3>
                 <p className="text-white/85 leading-relaxed">
-                  Ser para 2028 la marca referente en Colombia y Latinoamérica en uniformes y dotaciones
-                  empresariales.
+                  "Ser para 2028 la marca de referencia en Colombia y la región en uniformes y dotaciones
+                  empresariales, reconocida por su calidad, innovación y compromiso con el cliente."
                 </p>
               </div>
             </Reveal>
