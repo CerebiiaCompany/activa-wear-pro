@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { label: "Inicio", href: "#inicio" },
@@ -31,18 +32,12 @@ export function SiteHeader() {
       }`}
     >
       <div className="container-wide flex h-20 items-center justify-between gap-6">
-        <a href="#inicio" className="flex items-center gap-2 shrink-0">
-          <div className="grid h-9 w-9 place-items-center rounded-md bg-primary text-primary-foreground font-display font-bold">
-            A
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className={`font-display text-base font-bold tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
-              Uniformes Activa
-            </span>
-            <span className={`text-[10px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
-              Vestimos tu equipo
-            </span>
-          </div>
+        <a href="#inicio" className="flex items-center gap-3 shrink-0">
+          <img
+            src={logo}
+            alt="Activa Uniformes"
+            className={`h-11 w-auto transition-all ${scrolled ? "" : "brightness-0 invert"}`}
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">

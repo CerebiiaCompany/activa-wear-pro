@@ -39,13 +39,13 @@ import lineHealth from "@/assets/line-health.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Uniformes Activa — Vestimos tu equipo. Proyectamos tu grandeza." },
+      { title: "Activa Uniformes — Vestimos tu equipo. Proyectamos tu grandeza." },
       {
         name: "description",
         content:
           "Diseñamos y confeccionamos uniformes empresariales y dotaciones corporativas con calidad, identidad y cobertura nacional e internacional.",
       },
-      { property: "og:title", content: "Uniformes Activa — Dotaciones empresariales" },
+      { property: "og:title", content: "Activa Uniformes — Dotaciones empresariales" },
       {
         property: "og:description",
         content:
@@ -68,12 +68,12 @@ const lineas = [
 ];
 
 const benefits = [
-  { icon: ShieldCheck, title: "Calidad Garantizada", desc: "Materiales seleccionados y procesos de confección especializados." },
-  { icon: Sparkles, title: "Diseño Personalizado", desc: "Adaptamos cada uniforme a la identidad de la empresa." },
-  { icon: Layers, title: "Producción Escalable", desc: "Capacidad para pequeños y grandes volúmenes." },
-  { icon: Truck, title: "Entregas Oportunas", desc: "Cumplimiento y puntualidad en cada despacho." },
-  { icon: Lightbulb, title: "Innovación", desc: "Diseños modernos, funcionales y duraderos." },
-  { icon: HeartHandshake, title: "Atención Personalizada", desc: "Acompañamiento en todo el proceso." },
+  { icon: HeartHandshake, title: "Compromiso con el Cliente", desc: "Ponemos al cliente en el centro: escuchamos, entendemos y resolvemos con agilidad y cercanía." },
+  { icon: Lightbulb, title: "Innovación y Mejora Continua", desc: "Desafiamos lo establecido y buscamos nuevas formas de hacer mejor nuestro trabajo." },
+  { icon: Layers, title: "Responsabilidad y Sostenibilidad", desc: "Actuamos con ética hacia nuestras comunidades y el medio ambiente." },
+  { icon: ShieldCheck, title: "Calidad con Compromiso", desc: "Altos estándares en diseño, materiales y confección para prendas funcionales y duraderas." },
+  { icon: Sparkles, title: "Trabajo en Equipo", desc: "Comunicación abierta, respeto y cooperación: los mejores resultados se logran juntos." },
+  { icon: Truck, title: "Orgullo y Pasión por Servir", desc: "Amamos lo que hacemos y nos motiva fortalecer la identidad de quienes nos visten." },
 ];
 
 const proceso = [
@@ -90,7 +90,7 @@ const testimonios = [
     role: "Gerente de Talento Humano",
     company: "Grupo Andina S.A.",
     quote:
-      "Uniformes Activa entendió nuestra cultura corporativa y transformó cómo se ve nuestro equipo. Calidad impecable y entrega puntual.",
+      "Activa Uniformes entendió nuestra cultura corporativa y transformó cómo se ve nuestro equipo. Calidad impecable y entrega puntual.",
   },
   {
     name: "Carlos Vergara",
@@ -143,7 +143,7 @@ function Index() {
         <div className="container-wide relative z-10 pt-32 pb-20 text-white">
           <div className="max-w-3xl animate-fade-in-slow">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-success)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" />
               Dotaciones empresariales premium
             </span>
             <h1 className="mt-6 text-balance text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
@@ -180,7 +180,7 @@ function Index() {
                 { v: 100, s: "%", label: "Producción personalizada" },
                 { v: 24, s: "/7", label: "Cobertura nacional e internacional" },
               ].map((s) => (
-                <div key={s.label} className="border-l-2 border-[var(--brand-success)] pl-4">
+                <div key={s.label} className="border-l-2 border-[var(--brand-red)] pl-4">
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
                     <Counter to={s.v} suffix={s.s} />
                   </div>
@@ -225,8 +225,9 @@ function Index() {
                 Una trayectoria construida prenda a prenda.
               </h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
-                Más de una década perfeccionando el arte de la dotación empresarial,
-                con un equipo humano dedicado a vestir organizaciones de todos los sectores.
+                Activa Uniformes nació del sueño de <strong className="text-foreground">María de la Paz Parada</strong>,
+                una emprendedora nortesantandereana con visión de futuro y un liderazgo comprometido con la calidad,
+                el servicio y la cercanía con cada cliente.
               </p>
               <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
                 <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-80 object-cover" />
@@ -242,9 +243,10 @@ function Index() {
                 </h3>
                 <ol className="relative border-l-2 border-border space-y-8 pl-8">
                   {[
-                    { y: "2008", t: "Inicio de la formación profesional." },
-                    { y: "2014", t: "Nacimiento oficial de Uniformes Activa." },
-                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander y en crecimiento nacional." },
+                    { y: "2008", t: "María de la Paz Parada inicia su sueño emprendedor y se forma en confección industrial en el SENA." },
+                    { y: "2010–2014", t: "Cuatro años de experiencia laboral y formación continua, perfeccionando conocimientos y visión empresarial." },
+                    { y: "2014", t: "Formalización oficial de Activa Uniformes, con el respaldo de su familia y un equipo creciente." },
+                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander por su calidad, puntualidad y atención personalizada." },
                   ].map((m) => (
                     <li key={m.y} className="relative">
                       <span className="absolute -left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
@@ -264,21 +266,21 @@ function Index() {
                   Misión
                 </h3>
                 <p className="text-foreground/85 leading-relaxed">
-                  Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
+                  "Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
                   funcionalidad y estilo, con un compromiso firme por la calidad, la innovación y la cercanía
-                  con nuestros clientes.
+                  con nuestros clientes."
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="rounded-2xl bg-[var(--brand-ink)] p-8 text-white">
-                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-success)] mb-3">
+              <div className="rounded-2xl bg-[var(--brand-black)] p-8 text-white">
+                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)] mb-3">
                   Visión
                 </h3>
                 <p className="text-white/85 leading-relaxed">
-                  Ser para 2028 la marca referente en Colombia y Latinoamérica en uniformes y dotaciones
-                  empresariales.
+                  "Ser para 2028 la marca de referencia en Colombia y la región en uniformes y dotaciones
+                  empresariales, reconocida por su calidad, innovación y compromiso con el cliente."
                 </p>
               </div>
             </Reveal>
@@ -320,7 +322,7 @@ function Index() {
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <h3 className="font-display text-2xl font-bold text-white">{l.title}</h3>
                     <p className="mt-1 text-sm text-white/75">{l.desc}</p>
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--brand-success)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                       Ver línea <ArrowRight size={14} />
                     </div>
                   </div>
@@ -361,12 +363,12 @@ function Index() {
       </section>
 
       {/* PROYECTOS (masonry) */}
-      <section id="proyectos" className="py-24 sm:py-32 bg-[var(--brand-ink)] text-white">
+      <section id="proyectos" className="py-24 sm:py-32 bg-[var(--brand-black)] text-white">
         <div className="container-wide">
           <Reveal>
             <div className="flex flex-wrap justify-between items-end gap-6">
               <div className="max-w-2xl">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-success)]">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)]">
                   Proyectos
                 </span>
                 <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
@@ -400,7 +402,7 @@ function Index() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
                   <div className="absolute inset-x-0 bottom-0 p-5 translate-y-2 transition-transform duration-500 group-hover:translate-y-0">
-                    <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-success)]">{p.s}</div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-red)]">{p.s}</div>
                     <div className="mt-1 font-display text-xl font-bold">{p.t}</div>
                     <div className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/85 opacity-0 transition-opacity group-hover:opacity-100">
                       Ver detalles <ArrowRight size={14} />
@@ -435,7 +437,7 @@ function Index() {
                   <div className="text-center lg:text-left">
                     <div className="relative inline-grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
                       <p.icon size={22} />
-                      <span className="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-[var(--brand-success)] text-[11px] font-bold text-white">
+                      <span className="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-[var(--brand-red)] text-[11px] font-bold text-white">
                         {i + 1}
                       </span>
                     </div>
@@ -508,7 +510,7 @@ function Index() {
             {blog.map((p, i) => (
               <Reveal key={p.title} delay={i * 60}>
                 <article className="group h-full rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-[var(--brand-light)] to-[var(--brand-success)]/10 relative">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-[var(--brand-light)] to-[var(--brand-red)]/10 relative">
                     <div className="absolute inset-0 grid place-items-center font-display text-6xl font-bold text-primary/15">
                       {p.tag[0]}
                     </div>
@@ -542,7 +544,7 @@ function Index() {
             <div className="mt-10 flex flex-wrap gap-3 justify-center">
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-success)] px-7 py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-7 py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
                 Solicitar Cotización <ArrowRight size={16} />
               </a>
@@ -557,7 +559,7 @@ function Index() {
             <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/70">
               {["Respuesta en 24h", "Asesoría sin costo", "Cobertura nacional"].map((c) => (
                 <div key={c} className="inline-flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[var(--brand-success)]" /> {c}
+                  <CheckCircle2 size={16} className="text-[var(--brand-red)]" /> {c}
                 </div>
               ))}
             </div>
@@ -573,7 +575,7 @@ function Index() {
               <div className="grid h-9 w-9 place-items-center rounded-md bg-primary font-display font-bold text-primary-foreground">
                 A
               </div>
-              <span className="font-display text-lg font-bold text-white">Uniformes Activa</span>
+              <span className="font-display text-lg font-bold text-white">Activa Uniformes</span>
             </div>
             <p className="mt-5 text-sm leading-relaxed">
               Diseño, confección y comercialización de uniformes empresariales y dotaciones
@@ -601,10 +603,10 @@ function Index() {
               Contacto
             </h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-[var(--brand-success)]" /> +57 300 000 0000</li>
-              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-success)]" /> WhatsApp 24/7</li>
-              <li className="flex items-center gap-2.5"><Mail size={14} className="shrink-0 text-[var(--brand-success)]" /> ventas@uniformesactiva.com</li>
-              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-success)]" /> Cúcuta, Norte de Santander, Colombia</li>
+              <li className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-[var(--brand-red)]" /> +57 300 000 0000</li>
+              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> WhatsApp 24/7</li>
+              <li className="flex items-center gap-2.5"><Mail size={14} className="shrink-0 text-[var(--brand-red)]" /> ventas@activauniformes.com</li>
+              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> Cúcuta, Norte de Santander, Colombia</li>
             </ul>
           </div>
 
@@ -633,7 +635,7 @@ function Index() {
         </div>
         <div className="border-t border-white/10">
           <div className="container-wide py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-white/55">
-            <div>© {new Date().getFullYear()} Uniformes Activa. Todos los derechos reservados.</div>
+            <div>© {new Date().getFullYear()} Activa Uniformes. Todos los derechos reservados.</div>
             <div>Diseñado en Colombia · Proyectamos tu grandeza.</div>
           </div>
         </div>
