@@ -68,12 +68,12 @@ const lineas = [
 ];
 
 const benefits = [
-  { icon: ShieldCheck, title: "Calidad Garantizada", desc: "Materiales seleccionados y procesos de confección especializados." },
-  { icon: Sparkles, title: "Diseño Personalizado", desc: "Adaptamos cada uniforme a la identidad de la empresa." },
-  { icon: Layers, title: "Producción Escalable", desc: "Capacidad para pequeños y grandes volúmenes." },
-  { icon: Truck, title: "Entregas Oportunas", desc: "Cumplimiento y puntualidad en cada despacho." },
-  { icon: Lightbulb, title: "Innovación", desc: "Diseños modernos, funcionales y duraderos." },
-  { icon: HeartHandshake, title: "Atención Personalizada", desc: "Acompañamiento en todo el proceso." },
+  { icon: HeartHandshake, title: "Compromiso con el Cliente", desc: "Ponemos al cliente en el centro: escuchamos, entendemos y resolvemos con agilidad y cercanía." },
+  { icon: Lightbulb, title: "Innovación y Mejora Continua", desc: "Desafiamos lo establecido y buscamos nuevas formas de hacer mejor nuestro trabajo." },
+  { icon: Layers, title: "Responsabilidad y Sostenibilidad", desc: "Actuamos con ética hacia nuestras comunidades y el medio ambiente." },
+  { icon: ShieldCheck, title: "Calidad con Compromiso", desc: "Altos estándares en diseño, materiales y confección para prendas funcionales y duraderas." },
+  { icon: Sparkles, title: "Trabajo en Equipo", desc: "Comunicación abierta, respeto y cooperación: los mejores resultados se logran juntos." },
+  { icon: Truck, title: "Orgullo y Pasión por Servir", desc: "Amamos lo que hacemos y nos motiva fortalecer la identidad de quienes nos visten." },
 ];
 
 const proceso = [
