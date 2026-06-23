@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal, Counter } from "@/components/Reveal";
+import { useI18n } from "@/lib/i18n";
 
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
@@ -65,33 +66,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const lineas = [
-  { title: "Administrativo", desc: "Uniformes corporativos y ejecutivos.", img: lineAdmin },
-  { title: "Camibusos", desc: "Prendas empresariales casuales.", img: linePolo },
-  { title: "Chalecos", desc: "Uniformes operativos y corporativos.", img: lineVest },
-  { title: "Escolar", desc: "Uniformes académicos e institucionales.", img: lineSchool },
-  { title: "Industrial", desc: "Dotaciones industriales y de seguridad.", img: lineIndustrial },
-  { title: "Restaurante y Cocina", desc: "Uniformes gastronómicos y hoteleros.", img: lineChef },
-  { title: "Salud y Belleza", desc: "Uniformes médicos, clínicas, spas y centros estéticos.", img: lineHealth },
-];
-
-const benefits = [
-  { icon: HeartHandshake, title: "Compromiso con el Cliente", desc: "Ponemos al cliente en el centro: escuchamos, entendemos y resolvemos con agilidad y cercanía." },
-  { icon: Lightbulb, title: "Innovación y Mejora Continua", desc: "Desafiamos lo establecido y buscamos nuevas formas de hacer mejor nuestro trabajo." },
-  { icon: Layers, title: "Responsabilidad y Sostenibilidad", desc: "Actuamos con ética hacia nuestras comunidades y el medio ambiente." },
-  { icon: ShieldCheck, title: "Calidad con Compromiso", desc: "Altos estándares en diseño, materiales y confección para prendas funcionales y duraderas." },
-  { icon: Sparkles, title: "Trabajo en Equipo", desc: "Comunicación abierta, respeto y cooperación: los mejores resultados se logran juntos." },
-  { icon: Truck, title: "Orgullo y Pasión por Servir", desc: "Amamos lo que hacemos y nos motiva fortalecer la identidad de quienes nos visten." },
-];
-
-const proceso = [
-  { icon: Search, title: "Diagnóstico", desc: "Analizamos necesidades." },
-  { icon: PenTool, title: "Diseño", desc: "Creamos propuestas visuales." },
-  { icon: Factory, title: "Producción", desc: "Fabricación especializada." },
-  { icon: ClipboardCheck, title: "Control de Calidad", desc: "Validación de cada prenda." },
-  { icon: PackageCheck, title: "Entrega", desc: "Despacho y acompañamiento." },
-];
-
 const testimonios = [
   {
     name: "María Restrepo",
@@ -129,6 +103,35 @@ const clientes = [
 ];
 
 function Index() {
+  const { t } = useI18n();
+
+  const lineas = [
+    { title: t("line.admin"), desc: t("line.admin.desc"), img: lineAdmin },
+    { title: t("line.polo"), desc: t("line.polo.desc"), img: linePolo },
+    { title: t("line.vest"), desc: t("line.vest.desc"), img: lineVest },
+    { title: t("line.school"), desc: t("line.school.desc"), img: lineSchool },
+    { title: t("line.industrial"), desc: t("line.industrial.desc"), img: lineIndustrial },
+    { title: t("line.chef"), desc: t("line.chef.desc"), img: lineChef },
+    { title: t("line.health"), desc: t("line.health.desc"), img: lineHealth },
+  ];
+
+  const benefits = [
+    { icon: HeartHandshake, title: t("value.commitment.t"), desc: t("value.commitment.d") },
+    { icon: Lightbulb, title: t("value.innovation.t"), desc: t("value.innovation.d") },
+    { icon: Layers, title: t("value.responsibility.t"), desc: t("value.responsibility.d") },
+    { icon: ShieldCheck, title: t("value.quality.t"), desc: t("value.quality.d") },
+    { icon: Sparkles, title: t("value.team.t"), desc: t("value.team.d") },
+    { icon: Truck, title: t("value.passion.t"), desc: t("value.passion.d") },
+  ];
+
+  const proceso = [
+    { icon: Search, title: t("process.s1.t"), desc: t("process.s1.d") },
+    { icon: PenTool, title: t("process.s2.t"), desc: t("process.s2.d") },
+    { icon: Factory, title: t("process.s3.t"), desc: t("process.s3.d") },
+    { icon: ClipboardCheck, title: t("process.s4.t"), desc: t("process.s4.d") },
+    { icon: PackageCheck, title: t("process.s5.t"), desc: t("process.s5.d") },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -152,41 +155,40 @@ function Index() {
           <div className="max-w-3xl animate-fade-in-slow">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" />
-              Dotaciones empresariales premium
+              {t("hero.badge")}
             </span>
             <h1 className="mt-5 sm:mt-6 text-balance text-3xl sm:text-5xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
-              Uniformes Empresariales que{" "}
+              {t("hero.title1")}{" "}
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-                fortalecen la identidad
+                {t("hero.titleHighlight")}
               </span>{" "}
-              de tu marca.
+              {t("hero.title2")}
             </h1>
             <p className="mt-5 sm:mt-6 max-w-2xl text-sm sm:text-lg text-white/80 leading-relaxed">
-              Diseñamos y confeccionamos uniformes corporativos que combinan imagen, funcionalidad,
-              comodidad y calidad para empresas que buscan proyectar profesionalismo.
+              {t("hero.desc")}
             </p>
             <div className="mt-7 sm:mt-9 flex flex-wrap gap-3">
               <a
                 href="#cotizar"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
-                Solicitar Cotización
+                {t("cta.quote")}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="#lineas"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
               >
-                Ver Catálogo
+                {t("cta.catalog")}
               </a>
             </div>
 
             <div className="mt-10 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-3xl">
               {[
-                { v: 10, s: "+", label: "Años de experiencia" },
-                { v: 500, s: "+", label: "Empresas atendidas" },
-                { v: 100, s: "%", label: "Producción personalizada" },
-                { v: 24, s: "/7", label: "Cobertura nacional e internacional" },
+                { v: 10, s: "+", label: t("hero.stat1") },
+                { v: 500, s: "+", label: t("hero.stat2") },
+                { v: 100, s: "%", label: t("hero.stat3") },
+                { v: 24, s: "/7", label: t("hero.stat4") },
               ].map((s) => (
                 <div key={s.label} className="border-l-2 border-[var(--brand-red)] pl-3 sm:pl-4">
                   <div className="font-display text-2xl sm:text-4xl font-bold text-white">
@@ -204,7 +206,7 @@ function Index() {
       <section id="clientes" className="border-y border-border bg-[var(--brand-light)] py-10 overflow-hidden">
         <div className="container-wide mb-6 text-center">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Empresas que confían en nosotros
+            {t("clients.title")}
           </p>
         </div>
         <div className="relative flex overflow-hidden">
