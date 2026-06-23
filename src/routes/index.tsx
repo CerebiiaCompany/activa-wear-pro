@@ -126,7 +126,7 @@ function Index() {
       <SiteHeader />
 
       {/* HERO */}
-      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="inicio" className="relative min-h-[100svh] flex items-center overflow-hidden">
         <img
           src={hero}
           alt="Equipo corporativo con uniformes Activa"
@@ -140,51 +140,51 @@ function Index() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/40 to-transparent" />
 
-        <div className="container-wide relative z-10 pt-32 pb-20 text-white">
+        <div className="container-wide relative z-10 pt-28 sm:pt-32 pb-16 sm:pb-20 text-white">
           <div className="max-w-3xl animate-fade-in-slow">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" />
               Dotaciones empresariales premium
             </span>
-            <h1 className="mt-6 text-balance text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <h1 className="mt-5 sm:mt-6 text-balance text-3xl sm:text-5xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
               Uniformes Empresariales que{" "}
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
                 fortalecen la identidad
               </span>{" "}
               de tu marca.
             </h1>
-            <p className="mt-6 max-w-2xl text-base sm:text-lg text-white/80 leading-relaxed">
+            <p className="mt-5 sm:mt-6 max-w-2xl text-sm sm:text-lg text-white/80 leading-relaxed">
               Diseñamos y confeccionamos uniformes corporativos que combinan imagen, funcionalidad,
               comodidad y calidad para empresas que buscan proyectar profesionalismo.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-7 sm:mt-9 flex flex-wrap gap-3">
               <a
                 href="#cotizar"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
                 Solicitar Cotización
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="#lineas"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
               >
                 Ver Catálogo
               </a>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl">
+            <div className="mt-10 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-3xl">
               {[
                 { v: 10, s: "+", label: "Años de experiencia" },
                 { v: 500, s: "+", label: "Empresas atendidas" },
                 { v: 100, s: "%", label: "Producción personalizada" },
                 { v: 24, s: "/7", label: "Cobertura nacional e internacional" },
               ].map((s) => (
-                <div key={s.label} className="border-l-2 border-[var(--brand-red)] pl-4">
-                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                <div key={s.label} className="border-l-2 border-[var(--brand-red)] pl-3 sm:pl-4">
+                  <div className="font-display text-2xl sm:text-4xl font-bold text-white">
                     <Counter to={s.v} suffix={s.s} />
                   </div>
-                  <div className="mt-1 text-xs sm:text-sm text-white/70 leading-snug">{s.label}</div>
+                  <div className="mt-1 text-[11px] sm:text-sm text-white/70 leading-snug">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -214,14 +214,14 @@ function Index() {
       </section>
 
       {/* NOSOTROS */}
-      <section id="nosotros" className="py-24 sm:py-32">
-        <div className="container-wide grid lg:grid-cols-2 gap-16 items-start">
+      <section id="nosotros" className="py-16 sm:py-24 lg:py-32">
+        <div className="container-wide grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <Reveal>
-            <div className="sticky top-32">
+            <div className="lg:sticky lg:top-32">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Nosotros
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-bold leading-tight text-balance">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
                 Una trayectoria construida prenda a prenda.
               </h2>
               <p className="mt-6 text-muted-foreground leading-relaxed">
@@ -230,18 +230,18 @@ function Index() {
                 el servicio y la cercanía con cada cliente.
               </p>
               <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
-                <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-80 object-cover" />
+                <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-64 sm:h-80 object-cover" />
               </div>
             </div>
           </Reveal>
 
-          <div className="space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             <Reveal>
               <div>
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6">
                   Historia
                 </h3>
-                <ol className="relative border-l-2 border-border space-y-8 pl-8">
+                <ol className="relative border-l-2 border-border space-y-8 pl-6 sm:pl-8">
                   {[
                     { y: "2008", t: "María de la Paz Parada inicia su sueño emprendedor y se forma en confección industrial en el SENA." },
                     { y: "2010–2014", t: "Cuatro años de experiencia laboral y formación continua, perfeccionando conocimientos y visión empresarial." },
@@ -249,10 +249,10 @@ function Index() {
                     { y: "Hoy", t: "Empresa reconocida en Norte de Santander por su calidad, puntualidad y atención personalizada." },
                   ].map((m) => (
                     <li key={m.y} className="relative">
-                      <span className="absolute -left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                      <span className="absolute -left-[34px] sm:-left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                         •
                       </span>
-                      <div className="font-display text-2xl font-bold text-primary">{m.y}</div>
+                      <div className="font-display text-xl sm:text-2xl font-bold text-primary">{m.y}</div>
                       <p className="mt-1 text-muted-foreground">{m.t}</p>
                     </li>
                   ))}
@@ -261,7 +261,7 @@ function Index() {
             </Reveal>
 
             <Reveal delay={100}>
-              <div className="rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-soft)]">
+              <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[var(--shadow-soft)]">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">
                   Misión
                 </h3>
@@ -274,7 +274,7 @@ function Index() {
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="rounded-2xl bg-[var(--brand-black)] p-8 text-white">
+              <div className="rounded-2xl bg-[var(--brand-black)] p-6 sm:p-8 text-white">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)] mb-3">
                   Visión
                 </h3>
@@ -289,14 +289,14 @@ function Index() {
       </section>
 
       {/* LÍNEAS */}
-      <section id="lineas" className="py-24 sm:py-32 bg-[var(--brand-light)]">
+      <section id="lineas" className="py-16 sm:py-24 lg:py-32 bg-[var(--brand-light)]">
         <div className="container-wide">
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Líneas de Producción
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-bold leading-tight text-balance">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
                 Una solución para cada sector.
               </h2>
               <p className="mt-5 text-muted-foreground">
@@ -306,7 +306,7 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {lineas.map((l, i) => (
               <Reveal key={l.title} delay={i * 60}>
                 <article className="group relative overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1">
@@ -334,22 +334,22 @@ function Index() {
       </section>
 
       {/* POR QUÉ ELEGIRNOS */}
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="container-wide">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Por qué elegirnos
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
                 Detrás de cada uniforme, una promesa de excelencia.
               </h2>
             </div>
           </Reveal>
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
             {benefits.map((b, i) => (
               <Reveal key={b.title} delay={i * 50}>
-                <div className="group h-full bg-card p-8 transition-colors hover:bg-[var(--brand-light)]">
+                <div className="group h-full bg-card p-6 sm:p-8 transition-colors hover:bg-[var(--brand-light)]">
                   <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                     <b.icon size={22} />
                   </div>
@@ -363,7 +363,7 @@ function Index() {
       </section>
 
       {/* PROYECTOS (masonry) */}
-      <section id="proyectos" className="py-24 sm:py-32 bg-[var(--brand-black)] text-white">
+      <section id="proyectos" className="py-16 sm:py-24 lg:py-32 bg-[var(--brand-black)] text-white">
         <div className="container-wide">
           <Reveal>
             <div className="flex flex-wrap justify-between items-end gap-6">
@@ -371,7 +371,7 @@ function Index() {
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)]">
                   Proyectos
                 </span>
-                <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
+                <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
                   Empresas vestidas con propósito.
                 </h2>
               </div>
@@ -381,7 +381,7 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+          <div className="mt-10 sm:mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
             {[
               { img: lineAdmin, t: "Banca Corporativa", s: "Administrativo" },
               { img: lineIndustrial, t: "Planta Cementera Norte", s: "Industrial" },
@@ -397,7 +397,7 @@ function Index() {
                     alt={p.t}
                     loading="lazy"
                     className={`w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ${
-                      i % 3 === 0 ? "h-[420px]" : i % 3 === 1 ? "h-[320px]" : "h-[380px]"
+                      i % 3 === 0 ? "h-[320px] sm:h-[420px]" : i % 3 === 1 ? "h-[260px] sm:h-[320px]" : "h-[290px] sm:h-[380px]"
                     }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
@@ -416,22 +416,22 @@ function Index() {
       </section>
 
       {/* PROCESO */}
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="container-wide">
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Proceso de trabajo
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
                 Un método claro, de extremo a extremo.
               </h2>
             </div>
           </Reveal>
 
-          <div className="mt-16 relative">
+          <div className="mt-12 sm:mt-16 relative">
             <div className="hidden lg:block absolute top-7 left-0 right-0 h-px bg-border" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 relative">
               {proceso.map((p, i) => (
                 <Reveal key={p.title} delay={i * 80}>
                   <div className="text-center lg:text-left">
@@ -452,22 +452,22 @@ function Index() {
       </section>
 
       {/* TESTIMONIOS */}
-      <section className="py-24 sm:py-32 bg-[var(--brand-light)]">
+      <section className="py-16 sm:py-24 lg:py-32 bg-[var(--brand-light)]">
         <div className="container-wide">
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Testimonios
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
                 Lo que dicen las empresas que vestimos.
               </h2>
             </div>
           </Reveal>
-          <div className="mt-14 grid lg:grid-cols-3 gap-6">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonios.map((t, i) => (
               <Reveal key={t.name} delay={i * 80}>
-                <figure className="h-full rounded-2xl bg-card p-8 border border-border shadow-[var(--shadow-soft)] flex flex-col">
+                <figure className="h-full rounded-2xl bg-card p-6 sm:p-8 border border-border shadow-[var(--shadow-soft)] flex flex-col">
                   <Quote className="text-primary" size={28} />
                   <blockquote className="mt-5 text-foreground/85 leading-relaxed flex-1">
                     "{t.quote}"
@@ -489,7 +489,7 @@ function Index() {
       </section>
 
       {/* BLOG */}
-      <section id="blog" className="py-24 sm:py-32">
+      <section id="blog" className="py-16 sm:py-24 lg:py-32">
         <div className="container-wide">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
@@ -497,7 +497,7 @@ function Index() {
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                   Blog
                 </span>
-                <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-balance">
+                <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
                   Ideas, tendencias y conocimiento textil.
                 </h2>
               </div>
@@ -506,7 +506,7 @@ function Index() {
               </a>
             </div>
           </Reveal>
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {blog.map((p, i) => (
               <Reveal key={p.title} delay={i * 60}>
                 <article className="group h-full rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]">
@@ -530,27 +530,27 @@ function Index() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="cotizar" className="relative py-32 overflow-hidden">
+      <section id="cotizar" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
         <img src={cta} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/95 via-[#0F172A]/90 to-[#1D4ED8]/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/85 to-[var(--brand-red)]/70" />
         <div className="container-wide relative z-10 text-center text-white">
           <Reveal>
-            <h2 className="text-balance text-4xl sm:text-6xl font-bold leading-tight max-w-4xl mx-auto">
+            <h2 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
               Tu equipo merece una imagen que inspire confianza.
             </h2>
-            <p className="mt-6 max-w-2xl mx-auto text-white/80 text-lg">
+            <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/80 text-base sm:text-lg">
               Diseñamos uniformes que fortalecen la identidad de tu empresa y proyectan profesionalismo.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3 justify-center">
+            <div className="mt-8 sm:mt-10 flex flex-wrap gap-3 justify-center">
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-7 py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
                 Solicitar Cotización <ArrowRight size={16} />
               </a>
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
               >
                 Contactar Asesor
               </a>
@@ -569,14 +569,9 @@ function Index() {
 
       {/* FOOTER */}
       <footer id="contacto" className="bg-[var(--brand-black)] text-white/80">
-        <div className="container-wide py-20 grid lg:grid-cols-4 gap-12">
+        <div className="container-wide py-14 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
           <div>
-            <div className="flex items-center gap-2">
-              <div className="grid h-9 w-9 place-items-center rounded-md bg-primary font-display font-bold text-primary-foreground">
-                A
-              </div>
-              <span className="font-display text-lg font-bold text-white">Activa Uniformes</span>
-            </div>
+            <img src={logo} alt="Activa Uniformes" className="h-10 w-auto brightness-0 invert" />
             <p className="mt-5 text-sm leading-relaxed">
               Diseño, confección y comercialización de uniformes empresariales y dotaciones
               corporativas. Vestimos tu equipo. Proyectamos tu grandeza.
