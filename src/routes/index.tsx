@@ -229,16 +229,20 @@ function Index() {
           <Reveal>
             <div className="lg:sticky lg:top-32">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Nosotros
+                {t("about.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
-                Una trayectoria construida prenda a prenda.
+                {t("about.title")}
               </h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed">
-                Activa Uniformes nació del sueño de <strong className="text-foreground">María de la Paz Parada</strong>,
-                una emprendedora nortesantandereana con visión de futuro y un liderazgo comprometido con la calidad,
-                el servicio y la cercanía con cada cliente.
-              </p>
+              <p
+                className="mt-6 text-muted-foreground leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html: t("about.desc", {
+                    founder:
+                      '<strong class="text-foreground">María de la Paz Parada</strong>',
+                  }),
+                }}
+              />
               <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
                 <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-64 sm:h-80 object-cover" />
               </div>
@@ -249,14 +253,14 @@ function Index() {
             <Reveal>
               <div>
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                  Historia
+                  {t("about.history")}
                 </h3>
                 <ol className="relative border-l-2 border-border space-y-8 pl-6 sm:pl-8">
                   {[
-                    { y: "2008", t: "María de la Paz Parada inicia su sueño emprendedor y se forma en confección industrial en el SENA." },
-                    { y: "2010–2014", t: "Cuatro años de experiencia laboral y formación continua, perfeccionando conocimientos y visión empresarial." },
-                    { y: "2014", t: "Formalización oficial de Activa Uniformes, con el respaldo de su familia y un equipo creciente." },
-                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander por su calidad, puntualidad y atención personalizada." },
+                    { y: "2008", t: t("about.history.2008") },
+                    { y: "2010–2014", t: t("about.history.2010") },
+                    { y: "2014", t: t("about.history.2014") },
+                    { y: t("about.history.today"), t: t("about.history.todayText") },
                   ].map((m) => (
                     <li key={m.y} className="relative">
                       <span className="absolute -left-[34px] sm:-left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
@@ -273,25 +277,18 @@ function Index() {
             <Reveal delay={100}>
               <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[var(--shadow-soft)]">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-                  Misión
+                  {t("about.mission")}
                 </h3>
-                <p className="text-foreground/85 leading-relaxed">
-                  "Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
-                  funcionalidad y estilo, con un compromiso firme por la calidad, la innovación y la cercanía
-                  con nuestros clientes."
-                </p>
+                <p className="text-foreground/85 leading-relaxed">{t("about.missionText")}</p>
               </div>
             </Reveal>
 
             <Reveal delay={200}>
               <div className="rounded-2xl bg-[var(--brand-black)] p-6 sm:p-8 text-white">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)] mb-3">
-                  Visión
+                  {t("about.vision")}
                 </h3>
-                <p className="text-white/85 leading-relaxed">
-                  "Ser para 2028 la marca de referencia en Colombia y la región en uniformes y dotaciones
-                  empresariales, reconocida por su calidad, innovación y compromiso con el cliente."
-                </p>
+                <p className="text-white/85 leading-relaxed">{t("about.visionText")}</p>
               </div>
             </Reveal>
           </div>
@@ -304,15 +301,12 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Líneas de Producción
+                {t("lines.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
-                Una solución para cada sector.
+                {t("lines.title")}
               </h2>
-              <p className="mt-5 text-muted-foreground">
-                Desde dotaciones administrativas hasta uniformes técnicos especializados,
-                desarrollamos cada línea con fotografía, diseño y producción dedicada.
-              </p>
+              <p className="mt-5 text-muted-foreground">{t("lines.desc")}</p>
             </div>
           </Reveal>
 
@@ -333,7 +327,7 @@ function Index() {
                     <h3 className="font-display text-2xl font-bold text-white">{l.title}</h3>
                     <p className="mt-1 text-sm text-white/75">{l.desc}</p>
                     <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      Ver línea <ArrowRight size={14} />
+                      {t("cta.viewLine")} <ArrowRight size={14} />
                     </div>
                   </div>
                 </article>
@@ -349,10 +343,10 @@ function Index() {
           <Reveal>
             <div className="text-center max-w-2xl mx-auto">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Por qué elegirnos
+                {t("why.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Detrás de cada uniforme, una promesa de excelencia.
+                {t("why.title")}
               </h2>
             </div>
           </Reveal>
