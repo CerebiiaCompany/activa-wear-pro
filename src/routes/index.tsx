@@ -25,6 +25,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal, Counter } from "@/components/Reveal";
 import { useI18n } from "@/lib/i18n";
+import { openQuoteDialog } from "@/components/QuoteDialog";
 
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
@@ -168,13 +169,14 @@ function Index() {
               {t("hero.desc")}
             </p>
             <div className="mt-7 sm:mt-9 flex flex-wrap gap-3">
-              <a
-                href="#cotizar"
+              <button
+                type="button"
+                onClick={openQuoteDialog}
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
                 {t("cta.quote")}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
+              </button>
               <a
                 href="#lineas"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
@@ -544,12 +546,13 @@ function Index() {
               {t("ctaFinal.desc")}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-wrap gap-3 justify-center">
-              <a
-                href="#contacto"
+              <button
+                type="button"
+                onClick={openQuoteDialog}
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
                 {t("cta.quote")} <ArrowRight size={16} />
-              </a>
+              </button>
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
