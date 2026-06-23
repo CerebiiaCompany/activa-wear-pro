@@ -28,6 +28,7 @@ import { Reveal, Counter } from "@/components/Reveal";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import cta from "@/assets/cta.jpg";
+import logo from "@/assets/logo.png";
 import lineAdmin from "@/assets/line-admin.jpg";
 import linePolo from "@/assets/line-polo.jpg";
 import lineVest from "@/assets/line-vest.jpg";
