@@ -141,6 +141,27 @@ const es: Dict = {
 
   "lang.country": "País",
   "lang.choose": "Elige tu país / idioma",
+
+  "quote.title": "Solicitar Cotización",
+  "quote.subtitle": "Cuéntanos sobre tu proyecto y te responderemos en menos de 24 horas.",
+  "quote.name": "Nombre completo",
+  "quote.company": "Empresa",
+  "quote.email": "Correo electrónico",
+  "quote.phone": "Teléfono / WhatsApp",
+  "quote.country": "País",
+  "quote.line": "Línea de interés",
+  "quote.linePlaceholder": "Selecciona una línea",
+  "quote.qty": "Cantidad aproximada",
+  "quote.qtyPlaceholder": "Ej. 50 unidades",
+  "quote.message": "Mensaje",
+  "quote.messagePlaceholder": "Cuéntanos sobre tu proyecto, fechas y necesidades…",
+  "quote.submit": "Enviar solicitud",
+  "quote.sending": "Enviando…",
+  "quote.success": "¡Solicitud enviada!",
+  "quote.successDesc": "Un asesor de Activa Uniformes se pondrá en contacto contigo muy pronto.",
+  "quote.close": "Cerrar",
+  "quote.required": "Campo requerido",
+  "quote.privacy": "Al enviar aceptas que tus datos serán usados solo para responder tu solicitud.",
 };
 
 const en: Dict = {
@@ -258,6 +279,27 @@ const en: Dict = {
 
   "lang.country": "Country",
   "lang.choose": "Choose your country / language",
+
+  "quote.title": "Request a Quote",
+  "quote.subtitle": "Tell us about your project and we will reply within 24 hours.",
+  "quote.name": "Full name",
+  "quote.company": "Company",
+  "quote.email": "Email",
+  "quote.phone": "Phone / WhatsApp",
+  "quote.country": "Country",
+  "quote.line": "Line of interest",
+  "quote.linePlaceholder": "Select a line",
+  "quote.qty": "Estimated quantity",
+  "quote.qtyPlaceholder": "e.g. 50 units",
+  "quote.message": "Message",
+  "quote.messagePlaceholder": "Tell us about your project, timing and needs…",
+  "quote.submit": "Send request",
+  "quote.sending": "Sending…",
+  "quote.success": "Request sent!",
+  "quote.successDesc": "An Activa Uniformes advisor will get in touch with you shortly.",
+  "quote.close": "Close",
+  "quote.required": "Required field",
+  "quote.privacy": "By submitting you agree that your data will only be used to reply to your request.",
 };
 
 const pt: Dict = {
@@ -375,6 +417,27 @@ const pt: Dict = {
 
   "lang.country": "País",
   "lang.choose": "Escolha seu país / idioma",
+
+  "quote.title": "Solicitar Orçamento",
+  "quote.subtitle": "Conte-nos sobre seu projeto e responderemos em até 24 horas.",
+  "quote.name": "Nome completo",
+  "quote.company": "Empresa",
+  "quote.email": "E-mail",
+  "quote.phone": "Telefone / WhatsApp",
+  "quote.country": "País",
+  "quote.line": "Linha de interesse",
+  "quote.linePlaceholder": "Selecione uma linha",
+  "quote.qty": "Quantidade aproximada",
+  "quote.qtyPlaceholder": "Ex.: 50 unidades",
+  "quote.message": "Mensagem",
+  "quote.messagePlaceholder": "Conte-nos sobre seu projeto, prazos e necessidades…",
+  "quote.submit": "Enviar solicitação",
+  "quote.sending": "Enviando…",
+  "quote.success": "Solicitação enviada!",
+  "quote.successDesc": "Um consultor da Activa Uniformes entrará em contato em breve.",
+  "quote.close": "Fechar",
+  "quote.required": "Campo obrigatório",
+  "quote.privacy": "Ao enviar você concorda que seus dados serão usados apenas para responder sua solicitação.",
 };
 
 const DICTS: Record<Lang, Dict> = { es, en, pt };

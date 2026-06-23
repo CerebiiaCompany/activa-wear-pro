@@ -45,7 +45,7 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
       {open && (
         <div
           role="listbox"
-          className="absolute right-0 z-50 mt-2 w-64 overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-elegant)] animate-fade-in-slow"
+          className="absolute right-0 z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-elegant)] animate-fade-in-slow"
         >
           <div className="px-4 py-2.5 border-b border-border">
             <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
