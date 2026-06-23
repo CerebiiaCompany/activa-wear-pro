@@ -503,6 +503,39 @@ function Index() {
         </div>
       </section>
 
+      {/* EQUIPO */}
+      <section id="equipo" className="py-16 sm:py-24 lg:py-32 bg-[var(--brand-light)]/40">
+        <div className="container-wide">
+          <Reveal>
+            <div className="max-w-2xl mx-auto text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Nuestro Equipo
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
+                Las personas detrás de <span className="text-primary">Activa</span>
+              </h2>
+              <p className="mt-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
+                Un equipo humano comprometido con la calidad, el diseño y la atención cercana que distingue a cada uniforme que confeccionamos.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            {teamMembers.map((m, i) => (
+              <Reveal key={m.name} delay={i * 60}>
+                <figure className="group rounded-2xl overflow-hidden bg-card border border-border transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]">
+                  <img
+                    src={m.img}
+                    alt={`${m.name} — ${m.role}`}
+                    loading="lazy"
+                    className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BLOG */}
       <section id="blog" className="py-16 sm:py-24 lg:py-32">
         <div className="container-wide">
