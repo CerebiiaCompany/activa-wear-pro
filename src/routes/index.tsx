@@ -37,6 +37,11 @@ import lineSchoolAsset from "@/assets/line-school.jpg.asset.json";
 import lineIndustrialAsset from "@/assets/line-industrial.jpg.asset.json";
 import lineChefAsset from "@/assets/line-chef.jpg.asset.json";
 import lineHealthAsset from "@/assets/line-health.jpg.asset.json";
+import team3 from "@/assets/team-3.png.asset.json";
+import team6 from "@/assets/team-6.png.asset.json";
+import team7 from "@/assets/team-7.png.asset.json";
+import team9 from "@/assets/team-9.png.asset.json";
+import team10 from "@/assets/team-10.png.asset.json";
 const lineAdmin = lineAdminAsset.url;
 const linePolo = linePoloAsset.url;
 const lineVest = lineVestAsset.url;
@@ -44,6 +49,14 @@ const lineSchool = lineSchoolAsset.url;
 const lineIndustrial = lineIndustrialAsset.url;
 const lineChef = lineChefAsset.url;
 const lineHealth = lineHealthAsset.url;
+
+const teamMembers = [
+  { img: team10.url, name: "Maria Paz", role: "Gerente Comercial" },
+  { img: team3.url, name: "Bianka Rojas", role: "Coordinadora de Venta" },
+  { img: team9.url, name: "Yamiletlz Quintero", role: "Administradora" },
+  { img: team7.url, name: "Jaider Rubio", role: "Líder de Producción" },
+  { img: team6.url, name: "Tatiana Florez", role: "Asesora Comercial" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
