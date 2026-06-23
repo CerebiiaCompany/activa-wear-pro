@@ -373,15 +373,13 @@ function Index() {
             <div className="flex flex-wrap justify-between items-end gap-6">
               <div className="max-w-2xl">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)]">
-                  Proyectos
+                  {t("projects.kicker")}
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                  Empresas vestidas con propósito.
+                  {t("projects.title")}
                 </h2>
               </div>
-              <p className="text-white/70 max-w-md">
-                Una selección de proyectos donde el diseño, la confección y la marca convergen.
-              </p>
+              <p className="text-white/70 max-w-md">{t("projects.desc")}</p>
             </div>
           </Reveal>
 
@@ -409,7 +407,7 @@ function Index() {
                     <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-red)]">{p.s}</div>
                     <div className="mt-1 font-display text-xl font-bold">{p.t}</div>
                     <div className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/85 opacity-0 transition-opacity group-hover:opacity-100">
-                      Ver detalles <ArrowRight size={14} />
+                      {t("cta.viewDetails")} <ArrowRight size={14} />
                     </div>
                   </div>
                 </div>
@@ -425,10 +423,10 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Proceso de trabajo
+                {t("process.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Un método claro, de extremo a extremo.
+                {t("process.title")}
               </h2>
             </div>
           </Reveal>
@@ -461,10 +459,10 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Testimonios
+                {t("testimonials.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Lo que dicen las empresas que vestimos.
+                {t("testimonials.title")}
               </h2>
             </div>
           </Reveal>
@@ -499,14 +497,14 @@ function Index() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div className="max-w-2xl">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                  Blog
+                  {t("blog.kicker")}
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                  Ideas, tendencias y conocimiento textil.
+                  {t("blog.title")}
                 </h2>
               </div>
               <a href="#blog" className="text-sm font-semibold text-primary inline-flex items-center gap-1.5 hover:gap-2 transition-all">
-                Ver todos <ArrowRight size={14} />
+                {t("cta.viewAll")} <ArrowRight size={14} />
               </a>
             </div>
           </Reveal>
@@ -540,28 +538,28 @@ function Index() {
         <div className="container-wide relative z-10 text-center text-white">
           <Reveal>
             <h2 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
-              Tu equipo merece una imagen que inspire confianza.
+              {t("ctaFinal.title")}
             </h2>
             <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/80 text-base sm:text-lg">
-              Diseñamos uniformes que fortalecen la identidad de tu empresa y proyectan profesionalismo.
+              {t("ctaFinal.desc")}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-wrap gap-3 justify-center">
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
-                Solicitar Cotización <ArrowRight size={16} />
+                {t("cta.quote")} <ArrowRight size={16} />
               </a>
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
               >
-                Contactar Asesor
+                {t("cta.advisor")}
               </a>
             </div>
 
             <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/70">
-              {["Respuesta en 24h", "Asesoría sin costo", "Cobertura nacional"].map((c) => (
+              {[t("ctaFinal.b1"), t("ctaFinal.b2"), t("ctaFinal.b3")].map((c) => (
                 <div key={c} className="inline-flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-[var(--brand-red)]" /> {c}
                 </div>
@@ -576,21 +574,23 @@ function Index() {
         <div className="container-wide py-14 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
           <div>
             <img src={logo} alt="Activa Uniformes" className="h-10 w-auto brightness-0 invert" />
-            <p className="mt-5 text-sm leading-relaxed">
-              Diseño, confección y comercialización de uniformes empresariales y dotaciones
-              corporativas. Vestimos tu equipo. Proyectamos tu grandeza.
-            </p>
+            <p className="mt-5 text-sm leading-relaxed">{t("footer.tagline")}</p>
           </div>
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Navegación
+              {t("footer.nav")}
             </h4>
             <ul className="space-y-3 text-sm">
-              {["Inicio", "Nosotros", "Líneas", "Contacto"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="hover:text-white transition-colors">
-                    {l}
+              {[
+                { l: t("nav.home"), h: "#inicio" },
+                { l: t("nav.about"), h: "#nosotros" },
+                { l: t("nav.lines"), h: "#lineas" },
+                { l: t("nav.contact"), h: "#contacto" },
+              ].map((i) => (
+                <li key={i.h}>
+                  <a href={i.h} className="hover:text-white transition-colors">
+                    {i.l}
                   </a>
                 </li>
               ))}
@@ -599,19 +599,19 @@ function Index() {
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Contacto
+              {t("footer.contact")}
             </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-[var(--brand-red)]" /> +57 300 000 0000</li>
-              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> WhatsApp 24/7</li>
+              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> {t("footer.whatsapp")}</li>
               <li className="flex items-center gap-2.5"><Mail size={14} className="shrink-0 text-[var(--brand-red)]" /> ventas@activauniformes.com</li>
-              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> Cúcuta, Norte de Santander, Colombia</li>
+              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> {t("footer.location")}</li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Redes sociales
+              {t("footer.social")}
             </h4>
             <div className="flex gap-3">
               {[
@@ -634,8 +634,8 @@ function Index() {
         </div>
         <div className="border-t border-white/10">
           <div className="container-wide py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-white/55">
-            <div>© {new Date().getFullYear()} Activa Uniformes. Todos los derechos reservados.</div>
-            <div>Diseñado en Colombia · Proyectamos tu grandeza.</div>
+            <div>© {new Date().getFullYear()} Activa Uniformes. {t("footer.rights")}</div>
+            <div>{t("footer.designed")}</div>
           </div>
         </div>
       </footer>
