@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal, Counter } from "@/components/Reveal";
+import { useI18n } from "@/lib/i18n";
 
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
@@ -65,33 +66,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const lineas = [
-  { title: "Administrativo", desc: "Uniformes corporativos y ejecutivos.", img: lineAdmin },
-  { title: "Camibusos", desc: "Prendas empresariales casuales.", img: linePolo },
-  { title: "Chalecos", desc: "Uniformes operativos y corporativos.", img: lineVest },
-  { title: "Escolar", desc: "Uniformes académicos e institucionales.", img: lineSchool },
-  { title: "Industrial", desc: "Dotaciones industriales y de seguridad.", img: lineIndustrial },
-  { title: "Restaurante y Cocina", desc: "Uniformes gastronómicos y hoteleros.", img: lineChef },
-  { title: "Salud y Belleza", desc: "Uniformes médicos, clínicas, spas y centros estéticos.", img: lineHealth },
-];
-
-const benefits = [
-  { icon: HeartHandshake, title: "Compromiso con el Cliente", desc: "Ponemos al cliente en el centro: escuchamos, entendemos y resolvemos con agilidad y cercanía." },
-  { icon: Lightbulb, title: "Innovación y Mejora Continua", desc: "Desafiamos lo establecido y buscamos nuevas formas de hacer mejor nuestro trabajo." },
-  { icon: Layers, title: "Responsabilidad y Sostenibilidad", desc: "Actuamos con ética hacia nuestras comunidades y el medio ambiente." },
-  { icon: ShieldCheck, title: "Calidad con Compromiso", desc: "Altos estándares en diseño, materiales y confección para prendas funcionales y duraderas." },
-  { icon: Sparkles, title: "Trabajo en Equipo", desc: "Comunicación abierta, respeto y cooperación: los mejores resultados se logran juntos." },
-  { icon: Truck, title: "Orgullo y Pasión por Servir", desc: "Amamos lo que hacemos y nos motiva fortalecer la identidad de quienes nos visten." },
-];
-
-const proceso = [
-  { icon: Search, title: "Diagnóstico", desc: "Analizamos necesidades." },
-  { icon: PenTool, title: "Diseño", desc: "Creamos propuestas visuales." },
-  { icon: Factory, title: "Producción", desc: "Fabricación especializada." },
-  { icon: ClipboardCheck, title: "Control de Calidad", desc: "Validación de cada prenda." },
-  { icon: PackageCheck, title: "Entrega", desc: "Despacho y acompañamiento." },
-];
-
 const testimonios = [
   {
     name: "María Restrepo",
@@ -129,6 +103,35 @@ const clientes = [
 ];
 
 function Index() {
+  const { t } = useI18n();
+
+  const lineas = [
+    { title: t("line.admin"), desc: t("line.admin.desc"), img: lineAdmin },
+    { title: t("line.polo"), desc: t("line.polo.desc"), img: linePolo },
+    { title: t("line.vest"), desc: t("line.vest.desc"), img: lineVest },
+    { title: t("line.school"), desc: t("line.school.desc"), img: lineSchool },
+    { title: t("line.industrial"), desc: t("line.industrial.desc"), img: lineIndustrial },
+    { title: t("line.chef"), desc: t("line.chef.desc"), img: lineChef },
+    { title: t("line.health"), desc: t("line.health.desc"), img: lineHealth },
+  ];
+
+  const benefits = [
+    { icon: HeartHandshake, title: t("value.commitment.t"), desc: t("value.commitment.d") },
+    { icon: Lightbulb, title: t("value.innovation.t"), desc: t("value.innovation.d") },
+    { icon: Layers, title: t("value.responsibility.t"), desc: t("value.responsibility.d") },
+    { icon: ShieldCheck, title: t("value.quality.t"), desc: t("value.quality.d") },
+    { icon: Sparkles, title: t("value.team.t"), desc: t("value.team.d") },
+    { icon: Truck, title: t("value.passion.t"), desc: t("value.passion.d") },
+  ];
+
+  const proceso = [
+    { icon: Search, title: t("process.s1.t"), desc: t("process.s1.d") },
+    { icon: PenTool, title: t("process.s2.t"), desc: t("process.s2.d") },
+    { icon: Factory, title: t("process.s3.t"), desc: t("process.s3.d") },
+    { icon: ClipboardCheck, title: t("process.s4.t"), desc: t("process.s4.d") },
+    { icon: PackageCheck, title: t("process.s5.t"), desc: t("process.s5.d") },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -152,41 +155,40 @@ function Index() {
           <div className="max-w-3xl animate-fade-in-slow">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" />
-              Dotaciones empresariales premium
+              {t("hero.badge")}
             </span>
             <h1 className="mt-5 sm:mt-6 text-balance text-3xl sm:text-5xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
-              Uniformes Empresariales que{" "}
+              {t("hero.title1")}{" "}
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-                fortalecen la identidad
+                {t("hero.titleHighlight")}
               </span>{" "}
-              de tu marca.
+              {t("hero.title2")}
             </h1>
             <p className="mt-5 sm:mt-6 max-w-2xl text-sm sm:text-lg text-white/80 leading-relaxed">
-              Diseñamos y confeccionamos uniformes corporativos que combinan imagen, funcionalidad,
-              comodidad y calidad para empresas que buscan proyectar profesionalismo.
+              {t("hero.desc")}
             </p>
             <div className="mt-7 sm:mt-9 flex flex-wrap gap-3">
               <a
                 href="#cotizar"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
-                Solicitar Cotización
+                {t("cta.quote")}
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="#lineas"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
               >
-                Ver Catálogo
+                {t("cta.catalog")}
               </a>
             </div>
 
             <div className="mt-10 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-3xl">
               {[
-                { v: 10, s: "+", label: "Años de experiencia" },
-                { v: 500, s: "+", label: "Empresas atendidas" },
-                { v: 100, s: "%", label: "Producción personalizada" },
-                { v: 24, s: "/7", label: "Cobertura nacional e internacional" },
+                { v: 10, s: "+", label: t("hero.stat1") },
+                { v: 500, s: "+", label: t("hero.stat2") },
+                { v: 100, s: "%", label: t("hero.stat3") },
+                { v: 24, s: "/7", label: t("hero.stat4") },
               ].map((s) => (
                 <div key={s.label} className="border-l-2 border-[var(--brand-red)] pl-3 sm:pl-4">
                   <div className="font-display text-2xl sm:text-4xl font-bold text-white">
@@ -204,7 +206,7 @@ function Index() {
       <section id="clientes" className="border-y border-border bg-[var(--brand-light)] py-10 overflow-hidden">
         <div className="container-wide mb-6 text-center">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Empresas que confían en nosotros
+            {t("clients.title")}
           </p>
         </div>
         <div className="relative flex overflow-hidden">
@@ -227,16 +229,20 @@ function Index() {
           <Reveal>
             <div className="lg:sticky lg:top-32">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Nosotros
+                {t("about.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
-                Una trayectoria construida prenda a prenda.
+                {t("about.title")}
               </h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed">
-                Activa Uniformes nació del sueño de <strong className="text-foreground">María de la Paz Parada</strong>,
-                una emprendedora nortesantandereana con visión de futuro y un liderazgo comprometido con la calidad,
-                el servicio y la cercanía con cada cliente.
-              </p>
+              <p
+                className="mt-6 text-muted-foreground leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html: t("about.desc", {
+                    founder:
+                      '<strong class="text-foreground">María de la Paz Parada</strong>',
+                  }),
+                }}
+              />
               <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
                 <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-64 sm:h-80 object-cover" />
               </div>
@@ -247,14 +253,14 @@ function Index() {
             <Reveal>
               <div>
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                  Historia
+                  {t("about.history")}
                 </h3>
                 <ol className="relative border-l-2 border-border space-y-8 pl-6 sm:pl-8">
                   {[
-                    { y: "2008", t: "María de la Paz Parada inicia su sueño emprendedor y se forma en confección industrial en el SENA." },
-                    { y: "2010–2014", t: "Cuatro años de experiencia laboral y formación continua, perfeccionando conocimientos y visión empresarial." },
-                    { y: "2014", t: "Formalización oficial de Activa Uniformes, con el respaldo de su familia y un equipo creciente." },
-                    { y: "Hoy", t: "Empresa reconocida en Norte de Santander por su calidad, puntualidad y atención personalizada." },
+                    { y: "2008", t: t("about.history.2008") },
+                    { y: "2010–2014", t: t("about.history.2010") },
+                    { y: "2014", t: t("about.history.2014") },
+                    { y: t("about.history.today"), t: t("about.history.todayText") },
                   ].map((m) => (
                     <li key={m.y} className="relative">
                       <span className="absolute -left-[34px] sm:-left-[42px] grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
@@ -271,25 +277,18 @@ function Index() {
             <Reveal delay={100}>
               <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[var(--shadow-soft)]">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-                  Misión
+                  {t("about.mission")}
                 </h3>
-                <p className="text-foreground/85 leading-relaxed">
-                  "Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad,
-                  funcionalidad y estilo, con un compromiso firme por la calidad, la innovación y la cercanía
-                  con nuestros clientes."
-                </p>
+                <p className="text-foreground/85 leading-relaxed">{t("about.missionText")}</p>
               </div>
             </Reveal>
 
             <Reveal delay={200}>
               <div className="rounded-2xl bg-[var(--brand-black)] p-6 sm:p-8 text-white">
                 <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)] mb-3">
-                  Visión
+                  {t("about.vision")}
                 </h3>
-                <p className="text-white/85 leading-relaxed">
-                  "Ser para 2028 la marca de referencia en Colombia y la región en uniformes y dotaciones
-                  empresariales, reconocida por su calidad, innovación y compromiso con el cliente."
-                </p>
+                <p className="text-white/85 leading-relaxed">{t("about.visionText")}</p>
               </div>
             </Reveal>
           </div>
@@ -302,15 +301,12 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Líneas de Producción
+                {t("lines.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
-                Una solución para cada sector.
+                {t("lines.title")}
               </h2>
-              <p className="mt-5 text-muted-foreground">
-                Desde dotaciones administrativas hasta uniformes técnicos especializados,
-                desarrollamos cada línea con fotografía, diseño y producción dedicada.
-              </p>
+              <p className="mt-5 text-muted-foreground">{t("lines.desc")}</p>
             </div>
           </Reveal>
 
@@ -331,7 +327,7 @@ function Index() {
                     <h3 className="font-display text-2xl font-bold text-white">{l.title}</h3>
                     <p className="mt-1 text-sm text-white/75">{l.desc}</p>
                     <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      Ver línea <ArrowRight size={14} />
+                      {t("cta.viewLine")} <ArrowRight size={14} />
                     </div>
                   </div>
                 </article>
@@ -347,10 +343,10 @@ function Index() {
           <Reveal>
             <div className="text-center max-w-2xl mx-auto">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Por qué elegirnos
+                {t("why.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Detrás de cada uniforme, una promesa de excelencia.
+                {t("why.title")}
               </h2>
             </div>
           </Reveal>
@@ -377,15 +373,13 @@ function Index() {
             <div className="flex flex-wrap justify-between items-end gap-6">
               <div className="max-w-2xl">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-red)]">
-                  Proyectos
+                  {t("projects.kicker")}
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                  Empresas vestidas con propósito.
+                  {t("projects.title")}
                 </h2>
               </div>
-              <p className="text-white/70 max-w-md">
-                Una selección de proyectos donde el diseño, la confección y la marca convergen.
-              </p>
+              <p className="text-white/70 max-w-md">{t("projects.desc")}</p>
             </div>
           </Reveal>
 
@@ -413,7 +407,7 @@ function Index() {
                     <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-red)]">{p.s}</div>
                     <div className="mt-1 font-display text-xl font-bold">{p.t}</div>
                     <div className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/85 opacity-0 transition-opacity group-hover:opacity-100">
-                      Ver detalles <ArrowRight size={14} />
+                      {t("cta.viewDetails")} <ArrowRight size={14} />
                     </div>
                   </div>
                 </div>
@@ -429,10 +423,10 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Proceso de trabajo
+                {t("process.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Un método claro, de extremo a extremo.
+                {t("process.title")}
               </h2>
             </div>
           </Reveal>
@@ -465,10 +459,10 @@ function Index() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Testimonios
+                {t("testimonials.kicker")}
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                Lo que dicen las empresas que vestimos.
+                {t("testimonials.title")}
               </h2>
             </div>
           </Reveal>
@@ -503,14 +497,14 @@ function Index() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div className="max-w-2xl">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                  Blog
+                  {t("blog.kicker")}
                 </span>
                 <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                  Ideas, tendencias y conocimiento textil.
+                  {t("blog.title")}
                 </h2>
               </div>
               <a href="#blog" className="text-sm font-semibold text-primary inline-flex items-center gap-1.5 hover:gap-2 transition-all">
-                Ver todos <ArrowRight size={14} />
+                {t("cta.viewAll")} <ArrowRight size={14} />
               </a>
             </div>
           </Reveal>
@@ -544,28 +538,28 @@ function Index() {
         <div className="container-wide relative z-10 text-center text-white">
           <Reveal>
             <h2 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
-              Tu equipo merece una imagen que inspire confianza.
+              {t("ctaFinal.title")}
             </h2>
             <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/80 text-base sm:text-lg">
-              Diseñamos uniformes que fortalecen la identidad de tu empresa y proyectan profesionalismo.
+              {t("ctaFinal.desc")}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-wrap gap-3 justify-center">
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-red)] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
               >
-                Solicitar Cotización <ArrowRight size={16} />
+                {t("cta.quote")} <ArrowRight size={16} />
               </a>
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
               >
-                Contactar Asesor
+                {t("cta.advisor")}
               </a>
             </div>
 
             <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/70">
-              {["Respuesta en 24h", "Asesoría sin costo", "Cobertura nacional"].map((c) => (
+              {[t("ctaFinal.b1"), t("ctaFinal.b2"), t("ctaFinal.b3")].map((c) => (
                 <div key={c} className="inline-flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-[var(--brand-red)]" /> {c}
                 </div>
@@ -580,21 +574,23 @@ function Index() {
         <div className="container-wide py-14 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
           <div>
             <img src={logo} alt="Activa Uniformes" className="h-10 w-auto brightness-0 invert" />
-            <p className="mt-5 text-sm leading-relaxed">
-              Diseño, confección y comercialización de uniformes empresariales y dotaciones
-              corporativas. Vestimos tu equipo. Proyectamos tu grandeza.
-            </p>
+            <p className="mt-5 text-sm leading-relaxed">{t("footer.tagline")}</p>
           </div>
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Navegación
+              {t("footer.nav")}
             </h4>
             <ul className="space-y-3 text-sm">
-              {["Inicio", "Nosotros", "Líneas", "Contacto"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="hover:text-white transition-colors">
-                    {l}
+              {[
+                { l: t("nav.home"), h: "#inicio" },
+                { l: t("nav.about"), h: "#nosotros" },
+                { l: t("nav.lines"), h: "#lineas" },
+                { l: t("nav.contact"), h: "#contacto" },
+              ].map((i) => (
+                <li key={i.h}>
+                  <a href={i.h} className="hover:text-white transition-colors">
+                    {i.l}
                   </a>
                 </li>
               ))}
@@ -603,19 +599,19 @@ function Index() {
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Contacto
+              {t("footer.contact")}
             </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-[var(--brand-red)]" /> +57 300 000 0000</li>
-              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> WhatsApp 24/7</li>
+              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> {t("footer.whatsapp")}</li>
               <li className="flex items-center gap-2.5"><Mail size={14} className="shrink-0 text-[var(--brand-red)]" /> ventas@activauniformes.com</li>
-              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> Cúcuta, Norte de Santander, Colombia</li>
+              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> {t("footer.location")}</li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white mb-5">
-              Redes sociales
+              {t("footer.social")}
             </h4>
             <div className="flex gap-3">
               {[
@@ -638,8 +634,8 @@ function Index() {
         </div>
         <div className="border-t border-white/10">
           <div className="container-wide py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-white/55">
-            <div>© {new Date().getFullYear()} Activa Uniformes. Todos los derechos reservados.</div>
-            <div>Diseñado en Colombia · Proyectamos tu grandeza.</div>
+            <div>© {new Date().getFullYear()} Activa Uniformes. {t("footer.rights")}</div>
+            <div>{t("footer.designed")}</div>
           </div>
         </div>
       </footer>

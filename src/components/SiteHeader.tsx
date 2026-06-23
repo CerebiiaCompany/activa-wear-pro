@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-
-const links = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Líneas", href: "#lineas" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
+
+  const links = [
+    { label: t("nav.home"), href: "#inicio" },
+    { label: t("nav.about"), href: "#nosotros" },
+    { label: t("nav.lines"), href: "#lineas" },
+    { label: t("nav.clients"), href: "#clientes" },
+    { label: t("nav.projects"), href: "#proyectos" },
+    { label: t("nav.blog"), href: "#blog" },
+    { label: t("nav.contact"), href: "#contacto" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -55,18 +58,19 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <LanguageSwitcher dark={scrolled} />
           <a
             href="#cotizar"
             className="hidden md:inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
           >
-            Solicitar Cotización
+            {t("cta.quote")}
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
             className={`lg:hidden grid place-items-center h-10 w-10 rounded-md ${
               scrolled ? "text-foreground" : "text-white"
             }`}
-            aria-label="Menú"
+            aria-label={t("menu.label")}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -91,7 +95,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
             >
-              Solicitar Cotización
+              {t("cta.quote")}
             </a>
           </div>
         </div>
