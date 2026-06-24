@@ -91,13 +91,6 @@ const testimonios = [
   },
 ];
 
-const blog = [
-  { tag: "Tendencias", title: "Tendencias en uniformes corporativos 2025", desc: "Cómo el textil técnico está cambiando la imagen empresarial." },
-  { tag: "Marca", title: "La importancia de la identidad empresarial", desc: "El uniforme como vehículo silencioso de cultura y propósito." },
-  { tag: "Industrial", title: "Dotaciones industriales modernas", desc: "Seguridad, ergonomía y diseño en una sola prenda." },
-  { tag: "Innovación", title: "Innovación textil aplicada a la confección", desc: "Telas inteligentes para entornos exigentes." },
-];
-
 const clientes = [
   "AVIANCA", "TERPEL", "BANCOLOMBIA", "CEMEX", "GRUPO ÉXITO", "POSTOBÓN",
   "ECOPETROL", "ARGOS", "ALPINA", "NUTRESA",
@@ -486,47 +479,6 @@ function Index() {
                     </div>
                   </figcaption>
                 </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BLOG */}
-      <section id="blog" className="py-16 sm:py-24 lg:py-32">
-        <div className="container-wide">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div className="max-w-2xl">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                  {t("blog.kicker")}
-                </span>
-                <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-balance">
-                  {t("blog.title")}
-                </h2>
-              </div>
-              <a href="#blog" className="text-sm font-semibold text-primary inline-flex items-center gap-1.5 hover:gap-2 transition-all">
-                {t("cta.viewAll")} <ArrowRight size={14} />
-              </a>
-            </div>
-          </Reveal>
-          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {blog.map((p, i) => (
-              <Reveal key={p.title} delay={i * 60}>
-                <article className="group h-full rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-[var(--brand-light)] to-[var(--brand-red)]/10 relative">
-                    <div className="absolute inset-0 grid place-items-center font-display text-6xl font-bold text-primary/15">
-                      {p.tag[0]}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-primary">{p.tag}</span>
-                    <h3 className="mt-3 font-display text-lg font-bold leading-snug group-hover:text-primary transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                  </div>
-                </article>
               </Reveal>
             ))}
           </div>

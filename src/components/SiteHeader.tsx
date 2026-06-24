@@ -16,7 +16,6 @@ export function SiteHeader() {
     { label: t("nav.lines"), href: "#lineas" },
     { label: t("nav.clients"), href: "#clientes" },
     { label: t("nav.projects"), href: "#proyectos" },
-    { label: t("nav.blog"), href: "#blog" },
     { label: t("nav.contact"), href: "#contacto" },
   ];
 
