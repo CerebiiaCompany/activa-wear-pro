@@ -386,9 +386,6 @@ function Index() {
               { img: lineAdmin, t: "Banca Corporativa", s: "Administrativo" },
               { img: lineIndustrial, t: "Planta Cementera Norte", s: "Industrial" },
               { img: lineHealth, t: "Clínica San Lucas", s: "Salud" },
-              { img: lineChef, t: "Hotel Boutique Andina", s: "Gastronomía" },
-              { img: lineSchool, t: "Colegio Bilingüe Norte", s: "Escolar" },
-              { img: linePolo, t: "Retail Nacional", s: "Camibusos" },
             ].map((p, i) => (
               <Reveal key={i} delay={i * 70} className="mb-5 break-inside-avoid">
                 <div className="group relative overflow-hidden rounded-2xl">
