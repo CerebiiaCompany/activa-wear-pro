@@ -304,7 +304,7 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {lineas.map((l, i) => (
               <Reveal key={l.title} delay={i * 60}>
                 <article className="group relative overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1">
