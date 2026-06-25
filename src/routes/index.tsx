@@ -147,8 +147,7 @@ function Index() {
 
         <div className="container-wide relative z-10 pt-28 sm:pt-32 pb-16 sm:pb-20 text-white">
           <div className="max-w-3xl animate-fade-in-slow">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" />
+            <span className="inline-block text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-white/80">
               {t("hero.badge")}
             </span>
             <h1 className="mt-5 sm:mt-6 text-balance text-3xl sm:text-5xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
