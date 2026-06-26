@@ -79,18 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Uniformes Activa offers professional corporate uniform design, manufacturing, and sales." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Uniformes Activa offers professional corporate uniform design, manufacturing, and sales." },
+      { title: "Activa Uniformes — Vestimos tu equipo. Proyectamos tu grandeza." },
+      {
+        name: "description",
+        content:
+          "Diseñamos y confeccionamos uniformes empresariales y dotaciones corporativas con calidad, identidad y cobertura nacional e internacional.",
+      },
+      { name: "author", content: "Activa Uniformes" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Uniformes Activa offers professional corporate uniform design, manufacturing, and sales." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ad8f761a-7172-4acb-b5ce-1422f2b27b34/id-preview-b8d0ba31--c6c91f59-c362-4149-aad6-a63b213d8d7b.lovable.app-1782354358177.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ad8f761a-7172-4acb-b5ce-1422f2b27b34/id-preview-b8d0ba31--c6c91f59-c362-4149-aad6-a63b213d8d7b.lovable.app-1782354358177.png" },
+      { property: "og:site_name", content: "Activa Uniformes" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -102,6 +100,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Activa Uniformes",
+          url: "https://activa-wear-pro.lovable.app",
+          description:
+            "Diseño, confección y comercialización de uniformes empresariales y dotaciones corporativas.",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Cúcuta",
+            addressRegion: "Norte de Santander",
+            addressCountry: "CO",
+          },
+        }),
       },
     ],
   }),

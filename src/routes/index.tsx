@@ -62,7 +62,16 @@ export const Route = createFileRoute("/")({
           "Uniformes corporativos a medida para empresas que proyectan profesionalismo. +10 años, +500 empresas atendidas.",
       },
       { property: "og:image", content: hero },
+      { property: "og:url", content: "https://activa-wear-pro.lovable.app/" },
+      { name: "twitter:title", content: "Activa Uniformes — Dotaciones empresariales" },
+      {
+        name: "twitter:description",
+        content:
+          "Uniformes corporativos a medida para empresas que proyectan profesionalismo. +10 años, +500 empresas atendidas.",
+      },
+      { name: "twitter:image", content: hero },
     ],
+    links: [{ rel: "canonical", href: "https://activa-wear-pro.lovable.app/" }],
   }),
   component: Index,
 });
