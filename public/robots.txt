@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://activa-wear-pro.lovable.app/sitemap.xml
