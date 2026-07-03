@@ -31,20 +31,13 @@ import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import cta from "@/assets/cta.jpg";
 import logo from "@/assets/logo.png";
-import lineAdminAsset from "@/assets/line-admin.jpg.asset.json";
-import linePoloAsset from "@/assets/line-polo.jpg.asset.json";
-import lineVestAsset from "@/assets/line-vest.jpg.asset.json";
-import lineSchoolAsset from "@/assets/line-school.jpg.asset.json";
-import lineIndustrialAsset from "@/assets/line-industrial.jpg.asset.json";
-import lineChefAsset from "@/assets/line-chef.jpg.asset.json";
-import lineHealthAsset from "@/assets/line-health.jpg.asset.json";
-const lineAdmin = lineAdminAsset.url;
-const linePolo = linePoloAsset.url;
-const lineVest = lineVestAsset.url;
-const lineSchool = lineSchoolAsset.url;
-const lineIndustrial = lineIndustrialAsset.url;
-const lineChef = lineChefAsset.url;
-const lineHealth = lineHealthAsset.url;
+const lineAdmin = "/images/line-admin.jpg";
+const linePolo = "/images/line-polo.jpg";
+const lineVest = "/images/line-vest.jpg";
+const lineSchool = "/images/line-school.jpg";
+const lineIndustrial = "/images/line-industrial.jpg";
+const lineChef = "/images/line-chef.jpg";
+const lineHealth = "/images/line-health.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
