@@ -93,38 +93,23 @@ const testimonios = [
   },
 ];
 
-const clientesGrupos = [
-  {
-    titulo: "Educación y Sector Público",
-    logos: [
-      { name: "SENA", src: "/images/clients/sena.jpg" },
-      { name: "Alcaldía de San José de Cúcuta", src: "/images/clients/alcaldia.jpg" },
-      { name: "FESC", src: "/images/clients/fesc.jpg" },
-    ],
-  },
-  {
-    titulo: "Automotriz y Movilidad",
-    logos: [
-      { name: "Honda", src: "/images/clients/honda.jpg" },
-      { name: "AKT Motos", src: "/images/clients/akt.jpg" },
-      { name: "Toyota", src: "/images/clients/toyota.jpg" },
-      { name: "Ford", src: "/images/clients/ford.jpg" },
-      { name: "Yamaha Meyer Motos", src: "/images/clients/yamaha-meyer.jpg" },
-      { name: "RTC", src: "/images/clients/rtc.jpg" },
-      { name: "Automarcol", src: "/images/clients/automarcol.jpg" },
-    ],
-  },
-  {
-    titulo: "Empresas y Servicios",
-    logos: [
-      { name: "Kokoriko", src: "/images/clients/kokoriko.jpg" },
-      { name: "Paisaje Urbano", src: "/images/clients/paisaje-urbano.jpg" },
-      { name: "Servicios Exequiales La Eternidad", src: "/images/clients/la-eternidad.jpg" },
-      { name: "Lanfer Full Moda", src: "/images/clients/lanfer.jpg" },
-      { name: "Hoja Verde", src: "/images/clients/hoja-verde.jpg" },
-      { name: "La Canasta", src: "/images/clients/la-canasta.jpg" },
-    ],
-  },
+const clientesLogos = [
+  { name: "SENA", src: "/images/clients/sena.jpg" },
+  { name: "Alcaldía de San José de Cúcuta", src: "/images/clients/alcaldia.jpg" },
+  { name: "FESC", src: "/images/clients/fesc.jpg" },
+  { name: "Honda", src: "/images/clients/honda.jpg" },
+  { name: "AKT Motos", src: "/images/clients/akt.jpg" },
+  { name: "Toyota", src: "/images/clients/toyota.jpg" },
+  { name: "Ford", src: "/images/clients/ford.jpg" },
+  { name: "Yamaha Meyer Motos", src: "/images/clients/yamaha-meyer.jpg" },
+  { name: "RTC", src: "/images/clients/rtc.jpg" },
+  { name: "Automarcol", src: "/images/clients/automarcol.jpg" },
+  { name: "Kokoriko", src: "/images/clients/kokoriko.jpg" },
+  { name: "Paisaje Urbano", src: "/images/clients/paisaje-urbano.jpg" },
+  { name: "Servicios Exequiales La Eternidad", src: "/images/clients/la-eternidad.jpg" },
+  { name: "Lanfer Full Moda", src: "/images/clients/lanfer.jpg" },
+  { name: "Hoja Verde", src: "/images/clients/hoja-verde.jpg" },
+  { name: "La Canasta", src: "/images/clients/la-canasta.jpg" },
 ];
 
 function Index() {
