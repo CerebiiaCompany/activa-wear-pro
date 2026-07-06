@@ -93,38 +93,23 @@ const testimonios = [
   },
 ];
 
-const clientesGrupos = [
-  {
-    titulo: "Educación y Sector Público",
-    logos: [
-      { name: "SENA", src: "/images/clients/sena.jpg" },
-      { name: "Alcaldía de San José de Cúcuta", src: "/images/clients/alcaldia.jpg" },
-      { name: "FESC", src: "/images/clients/fesc.jpg" },
-    ],
-  },
-  {
-    titulo: "Automotriz y Movilidad",
-    logos: [
-      { name: "Honda", src: "/images/clients/honda.jpg" },
-      { name: "AKT Motos", src: "/images/clients/akt.jpg" },
-      { name: "Toyota", src: "/images/clients/toyota.jpg" },
-      { name: "Ford", src: "/images/clients/ford.jpg" },
-      { name: "Yamaha Meyer Motos", src: "/images/clients/yamaha-meyer.jpg" },
-      { name: "RTC", src: "/images/clients/rtc.jpg" },
-      { name: "Automarcol", src: "/images/clients/automarcol.jpg" },
-    ],
-  },
-  {
-    titulo: "Empresas y Servicios",
-    logos: [
-      { name: "Kokoriko", src: "/images/clients/kokoriko.jpg" },
-      { name: "Paisaje Urbano", src: "/images/clients/paisaje-urbano.jpg" },
-      { name: "Servicios Exequiales La Eternidad", src: "/images/clients/la-eternidad.jpg" },
-      { name: "Lanfer Full Moda", src: "/images/clients/lanfer.jpg" },
-      { name: "Hoja Verde", src: "/images/clients/hoja-verde.jpg" },
-      { name: "La Canasta", src: "/images/clients/la-canasta.jpg" },
-    ],
-  },
+const clientesLogos = [
+  { name: "SENA", src: "/images/clients/sena.jpg" },
+  { name: "Alcaldía de San José de Cúcuta", src: "/images/clients/alcaldia.jpg" },
+  { name: "FESC", src: "/images/clients/fesc.jpg" },
+  { name: "Honda", src: "/images/clients/honda.jpg" },
+  { name: "AKT Motos", src: "/images/clients/akt.jpg" },
+  { name: "Toyota", src: "/images/clients/toyota.jpg" },
+  { name: "Ford", src: "/images/clients/ford.jpg" },
+  { name: "Yamaha Meyer Motos", src: "/images/clients/yamaha-meyer.jpg" },
+  { name: "RTC", src: "/images/clients/rtc.jpg" },
+  { name: "Automarcol", src: "/images/clients/automarcol.jpg" },
+  { name: "Kokoriko", src: "/images/clients/kokoriko.jpg" },
+  { name: "Paisaje Urbano", src: "/images/clients/paisaje-urbano.jpg" },
+  { name: "Servicios Exequiales La Eternidad", src: "/images/clients/la-eternidad.jpg" },
+  { name: "Lanfer Full Moda", src: "/images/clients/lanfer.jpg" },
+  { name: "Hoja Verde", src: "/images/clients/hoja-verde.jpg" },
+  { name: "La Canasta", src: "/images/clients/la-canasta.jpg" },
 ];
 
 function Index() {
@@ -227,39 +212,23 @@ function Index() {
         </div>
       </section>
 
-      {/* CLIENTES */}
-      <section id="clientes" className="border-y border-border bg-[var(--brand-light)] py-16 sm:py-20">
-        <div className="container-wide">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              {t("clients.title")}
-            </p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight">
-              Nuestros clientes
-            </h2>
-          </div>
-          <div className="space-y-10">
-            {clientesGrupos.map((grupo) => (
-              <div key={grupo.titulo}>
-                <h3 className="mb-5 text-center font-display text-lg sm:text-xl font-semibold text-foreground">
-                  {grupo.titulo}
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
-                  {grupo.logos.map((logo) => (
-                    <div
-                      key={logo.name}
-                      className="flex items-center justify-center rounded-lg bg-white p-4 h-24 sm:h-28 shadow-sm ring-1 ring-border/60 transition-transform hover:-translate-y-0.5"
-                    >
-                      <img
-                        src={logo.src}
-                        alt={logo.name}
-                        loading="lazy"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* CLIENTES marquee */}
+      <section id="clientes" className="border-y border-border bg-[var(--brand-light)] py-10 overflow-hidden">
+        <div className="container-wide mb-6 text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            {t("clients.title")}
+          </p>
+        </div>
+        <div className="relative flex overflow-hidden">
+          <div className="flex shrink-0 animate-marquee gap-12 pr-12 items-center">
+            {[...clientesLogos, ...clientesLogos].map((c, i) => (
+              <img
+                key={i}
+                src={c.src}
+                alt={c.name}
+                loading="lazy"
+                className="h-16 sm:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+              />
             ))}
           </div>
         </div>
