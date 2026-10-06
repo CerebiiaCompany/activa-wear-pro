@@ -93,10 +93,6 @@ const testimonios = [
   },
 ];
 
-const clientes = [
-  "AVIANCA", "TERPEL", "BANCOLOMBIA", "CEMEX", "GRUPO ÉXITO", "POSTOBÓN",
-  "ECOPETROL", "ARGOS", "ALPINA", "NUTRESA",
-];
 
 function Index() {
   const { t } = useI18n();
@@ -198,26 +194,6 @@ function Index() {
         </div>
       </section>
 
-      {/* CLIENTES marquee */}
-      <section id="clientes" className="border-y border-border bg-[var(--brand-light)] py-10 overflow-hidden">
-        <div className="container-wide mb-6 text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            {t("clients.title")}
-          </p>
-        </div>
-        <div className="relative flex overflow-hidden">
-          <div className="flex shrink-0 animate-marquee gap-16 pr-16">
-            {[...clientes, ...clientes].map((c, i) => (
-              <span
-                key={i}
-                className="font-display text-xl sm:text-2xl font-bold tracking-widest text-muted-foreground/60 hover:text-foreground transition-colors whitespace-nowrap"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* NOSOTROS */}
       <section id="nosotros" className="py-16 sm:py-24 lg:py-32">

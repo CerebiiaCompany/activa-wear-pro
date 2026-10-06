@@ -14,7 +14,6 @@ export function SiteHeader() {
     { label: t("nav.home"), href: "#inicio" },
     { label: t("nav.about"), href: "#nosotros" },
     { label: t("nav.lines"), href: "#lineas" },
-    { label: t("nav.clients"), href: "#clientes" },
     { label: t("nav.projects"), href: "#proyectos" },
     { label: t("nav.contact"), href: "#contacto" },
   ];
