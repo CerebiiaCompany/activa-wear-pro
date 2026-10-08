@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -18,9 +19,16 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Linkedin,
   MessageCircle,
   CheckCircle2,
+  Play,
+  Youtube,
+  ExternalLink,
+  ZoomIn,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Images,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal, Counter } from "@/components/Reveal";
@@ -31,13 +39,134 @@ import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import cta from "@/assets/cta.jpg";
 import logo from "@/assets/logo.png";
-const lineAdmin = "/images/line-admin.jpg";
-const linePolo = "/images/line-polo.jpg";
-const lineVest = "/images/line-vest.jpg";
-const lineSchool = "/images/line-school.jpg";
-const lineIndustrial = "/images/line-industrial.jpg";
-const lineChef = "/images/line-chef.jpg";
-const lineHealth = "/images/line-health.jpg";
+const lineAdmin = "/lineas/CATALOGO FINAL-03.jpg";
+const linePolo = "/lineas/CATALOGO FINAL-58.jpg";
+const lineVest = "/lineas/CATALOGO FINAL-97.jpg";
+const lineIndustrial = "/lineas/CATALOGO FINAL-36.jpg";
+const lineChef = "/lineas/CATALOGO FINAL-84.jpg";
+const lineHealth = "/lineas/CATALOGO FINAL-70.jpg";
+
+export interface ProjectItem {
+  id: string;
+  name: string;
+  categoryGroup: string;
+  category: string;
+  images: string[];
+}
+
+export const PROJECT_CATEGORIES = [
+  "Todos",
+  "Automotriz & Transporte",
+  "Institucional & Salud",
+  "Construcción & Industria",
+  "Comercial & Medios",
+] as const;
+
+export const PROJECTS_DATA: ProjectItem[] = [
+  {
+    id: "akt",
+    name: "AKT Motos",
+    categoryGroup: "Automotriz & Transporte",
+    category: "Automotriz & Comercial",
+    images: ["/AKT/_LEO0848.jpg", "/AKT/_LEO0970.jpg"],
+  },
+  {
+    id: "alcaldia",
+    name: "Alcaldía de Cúcuta",
+    categoryGroup: "Institucional & Salud",
+    category: "Sector Público & Gobierno",
+    images: ["/Alcaldia/IMG_8284.jpg", "/Alcaldia/IMG_8285.jpg"],
+  },
+  {
+    id: "coomulpinort",
+    name: "Coomulpinort",
+    categoryGroup: "Automotriz & Transporte",
+    category: "Cooperativa & Transporte",
+    images: ["/Coomulpinort/_LEO4390.jpg", "/Coomulpinort/activa_3.jpg"],
+  },
+  {
+    id: "cruz-roja",
+    name: "Cruz Roja",
+    categoryGroup: "Institucional & Salud",
+    category: "Salud & Asistencia",
+    images: ["/Cruz%20roja/activa.jpg", "/Cruz%20roja/activa_2.jpg"],
+  },
+  {
+    id: "ct-shoes",
+    name: "CT Shoes",
+    categoryGroup: "Comercial & Medios",
+    category: "Retail & Calzado",
+    images: [
+      "/CT%20Shoes/Mesa%20de%20trabajo%201.1.jpg",
+      "/CT%20Shoes/Mesa%20de%20trabajo%203.jpg",
+    ],
+  },
+  {
+    id: "paisaje-urbano",
+    name: "Paisaje Urbano",
+    categoryGroup: "Construcción & Industria",
+    category: "Construcción & Desarrollo",
+    images: [
+      "/Paisaje%20Urbano/_LEO0600.jpg",
+      "/Paisaje%20Urbano/_LEO0791.jpg",
+    ],
+  },
+  {
+    id: "progar",
+    name: "Progar",
+    categoryGroup: "Construcción & Industria",
+    category: "Dotaciones Industriales",
+    images: ["/Progar/activa_28.jpg", "/Progar/cargo.jpg"],
+  },
+  {
+    id: "rtc",
+    name: "RTC",
+    categoryGroup: "Comercial & Medios",
+    category: "Telecomunicaciones",
+    images: ["/RTC/ACTIVAJULIO_26.jpg", "/RTC/ACTIVAJULIO_27.jpg"],
+  },
+  {
+    id: "seguridad",
+    name: "Seguridad Privada",
+    categoryGroup: "Construcción & Industria",
+    category: "Vigilancia & Seguridad",
+    images: ["/Seguridad/_LEO0328.jpg", "/Seguridad/_LEO0353.jpg"],
+  },
+  {
+    id: "sena",
+    name: "SENA",
+    categoryGroup: "Institucional & Salud",
+    category: "Educación & Formación",
+    images: ["/SENA/ACTIVAJULIO_5.jpg", "/SENA/ACTIVAJULIO_21.jpg"],
+  },
+  {
+    id: "sharick",
+    name: "Sharick Joyería",
+    categoryGroup: "Comercial & Medios",
+    category: "Comercial & Joyería",
+    images: [
+      "/Sharick%20Joyeria/Mesa%20de%20trabajo%206.jpg",
+      "/Sharick%20Joyeria/Mesa%20de%20trabajo%207.jpg",
+    ],
+  },
+  {
+    id: "taxis-libres",
+    name: "Taxis Libres",
+    categoryGroup: "Automotriz & Transporte",
+    category: "Transporte Urbano",
+    images: [
+      "/Taxis%20libres/activa_8.jpg",
+      "/Taxis%20libres/activa_10.jpg",
+    ],
+  },
+  {
+    id: "tv-norte",
+    name: "TV Norte",
+    categoryGroup: "Comercial & Medios",
+    category: "Medios & Televisión",
+    images: ["/TV%20Norte/ACTIVAJULIO_29.jpg", "/TV%20Norte/_LEO0122.jpg"],
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -97,12 +226,56 @@ const testimonios = [
 
 function Index() {
   const { t } = useI18n();
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
+  const [activeLightbox, setActiveLightbox] = useState<{
+    project: ProjectItem;
+    imgIdx: number;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!activeLightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveLightbox(null);
+      if (e.key === "ArrowLeft") {
+        setActiveLightbox((prev) => {
+          if (!prev) return null;
+          const newIdx =
+            prev.imgIdx === 0
+              ? prev.project.images.length - 1
+              : prev.imgIdx - 1;
+          return { ...prev, imgIdx: newIdx };
+        });
+      }
+      if (e.key === "ArrowRight") {
+        setActiveLightbox((prev) => {
+          if (!prev) return null;
+          const newIdx =
+            prev.imgIdx === prev.project.images.length - 1
+              ? 0
+              : prev.imgIdx + 1;
+          return { ...prev, imgIdx: newIdx };
+        });
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [activeLightbox]);
+
+  const filteredProjects =
+    selectedCategory === "Todos"
+      ? PROJECTS_DATA
+      : PROJECTS_DATA.filter((p) => p.categoryGroup === selectedCategory);
 
   const lineas = [
     { title: t("line.admin"), desc: t("line.admin.desc"), img: lineAdmin },
     { title: t("line.polo"), desc: t("line.polo.desc"), img: linePolo },
     { title: t("line.vest"), desc: t("line.vest.desc"), img: lineVest },
-    { title: t("line.school"), desc: t("line.school.desc"), img: lineSchool },
     { title: t("line.industrial"), desc: t("line.industrial.desc"), img: lineIndustrial },
     { title: t("line.chef"), desc: t("line.chef.desc"), img: lineChef },
     { title: t("line.health"), desc: t("line.health.desc"), img: lineHealth },
@@ -217,8 +390,58 @@ function Index() {
                   }),
                 }}
               />
-              <div className="mt-8 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
-                <img src={about} alt="Confección artesanal" loading="lazy" className="w-full h-64 sm:h-80 object-cover" />
+
+              {/* Video Card */}
+              <div className="mt-8 relative overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)] border border-border bg-slate-950 aspect-video sm:aspect-[16/10] group">
+                {isPlayingVideo ? (
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/F9YeQIIOzbE?autoplay=1"
+                    title="Activa Uniformes — Nuestra Historia"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setIsPlayingVideo(true)}
+                    aria-label={t("about.watchVideo")}
+                    className="relative w-full h-full text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 block"
+                  >
+                    <img
+                      src={about}
+                      alt="Confección artesanal Activa Uniformes"
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
+
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-xs font-medium text-white border border-white/15 shadow-sm">
+                      <Youtube size={14} className="text-[#FF0000]" />
+                      <span>{t("about.videoBadge")}</span>
+                    </div>
+
+                    <div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-full bg-primary text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/90 cursor-pointer pointer-events-none"
+                    >
+                      <Play size={28} className="translate-x-0.5 fill-white text-white" />
+                    </div>
+                  </button>
+                )}
+              </div>
+
+              {/* External YouTube link */}
+              <div className="mt-3.5 flex items-center">
+                <a
+                  href="https://www.youtube.com/shorts/F9YeQIIOzbE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground/80 hover:text-primary transition-colors group"
+                >
+                  <Youtube size={17} className="text-[#FF0000] shrink-0" />
+                  <span className="underline-offset-4 group-hover:underline">{t("about.watchVideo")}</span>
+                  <ExternalLink size={13} className="opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
             </div>
           </Reveal>
@@ -284,27 +507,23 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="mt-10 sm:mt-14 flex flex-wrap justify-center gap-5 sm:gap-6">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {lineas.map((l, i) => (
-              <Reveal
-                key={l.title}
-                delay={i * 60}
-                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-1.125rem)]"
-              >
-                <article className="group relative h-full overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1">
-                  <div className="aspect-[4/5] overflow-hidden">
+              <Reveal key={l.title} delay={i * 60}>
+                <article className="group relative h-full overflow-hidden rounded-2xl bg-slate-900 shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1.5">
+                  <div className="aspect-[1181/1654] overflow-hidden bg-slate-950">
                     <img
                       src={l.img}
                       alt={l.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                      className="h-full w-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/30 to-transparent opacity-90" />
-                  <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/25 to-transparent opacity-90 pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
                     <h3 className="font-display text-2xl font-bold text-white">{l.title}</h3>
-                    <p className="mt-1 text-sm text-white/75">{l.desc}</p>
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <p className="mt-1 text-sm text-white/80 leading-snug">{l.desc}</p>
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                       {t("cta.viewLine")} <ArrowRight size={14} />
                     </div>
                   </div>
@@ -344,7 +563,7 @@ function Index() {
         </div>
       </section>
 
-      {/* PROYECTOS (masonry) */}
+      {/* PROYECTOS (13 empresas x 2 fotos) */}
       <section id="proyectos" className="py-16 sm:py-24 lg:py-32 bg-[var(--brand-black)] text-white">
         <div className="container-wide">
           <Reveal>
@@ -361,35 +580,229 @@ function Index() {
             </div>
           </Reveal>
 
-          <div className="mt-10 sm:mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-            {[
-              { img: lineAdmin, t: "Banca Corporativa", s: "Administrativo" },
-              { img: lineIndustrial, t: "Planta Cementera Norte", s: "Industrial" },
-              { img: lineHealth, t: "Clínica San Lucas", s: "Salud" },
-            ].map((p, i) => (
-              <Reveal key={i} delay={i * 70} className="mb-5 break-inside-avoid">
-                <div className="group relative overflow-hidden rounded-2xl">
-                  <img
-                    src={p.img}
-                    alt={p.t}
-                    loading="lazy"
-                    className={`w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ${
-                      i % 3 === 0 ? "h-[320px] sm:h-[420px]" : i % 3 === 1 ? "h-[260px] sm:h-[320px]" : "h-[290px] sm:h-[380px]"
+          {/* Categorías / Filtros */}
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-2 pb-2">
+            {PROJECT_CATEGORIES.map((cat) => {
+              const count =
+                cat === "Todos"
+                  ? PROJECTS_DATA.length
+                  : PROJECTS_DATA.filter((p) => p.categoryGroup === cat).length;
+              const isActive = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-[var(--shadow-soft)]"
+                      : "bg-white/5 text-white/75 hover:bg-white/10 hover:text-white border border-white/10"
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                      isActive ? "bg-white/20 text-white" : "bg-white/10 text-white/60"
                     }`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 translate-y-2 transition-transform duration-500 group-hover:translate-y-0">
-                    <div className="text-xs uppercase tracking-[0.2em] text-[var(--brand-red)]">{p.s}</div>
-                    <div className="mt-1 font-display text-xl font-bold">{p.t}</div>
-                    <div className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/85 opacity-0 transition-opacity group-hover:opacity-100">
-                      {t("cta.viewDetails")} <ArrowRight size={14} />
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Grid de 13 empresas con sus 2 imágenes */}
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, i) => (
+              <Reveal key={project.id} delay={(i % 6) * 60}>
+                <div className="group h-full rounded-2xl bg-white/[0.04] border border-white/10 p-5 hover:border-[var(--brand-red)]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between shadow-lg">
+                  {/* Header de la tarjeta */}
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--brand-red)] bg-[var(--brand-red)]/10 px-2.5 py-1 rounded-full border border-[var(--brand-red)]/20">
+                        {project.category}
+                      </span>
+                      <span className="text-xs text-white/50 flex items-center gap-1 font-medium">
+                        <Images size={13} /> 2 fotos
+                      </span>
                     </div>
+                    <h3 className="mt-3 font-display text-xl font-bold text-white group-hover:text-white transition-colors">
+                      {project.name}
+                    </h3>
+                  </div>
+
+                  {/* 2 Imágenes de la empresa */}
+                  <div className="grid grid-cols-2 gap-3 mt-4">
+                    {project.images.map((imgUrl, imgIdx) => (
+                      <button
+                        key={imgIdx}
+                        type="button"
+                        onClick={() => setActiveLightbox({ project, imgIdx })}
+                        className="group/img relative aspect-[3/4] overflow-hidden rounded-xl bg-black/50 text-left focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)] cursor-pointer border border-white/10 hover:border-white/30 transition-all"
+                      >
+                        <img
+                          src={imgUrl}
+                          alt={`${project.name} - Prenda ${imgIdx + 1}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-108"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-between p-2.5">
+                          <span className="text-[10px] font-medium text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-sm">
+                            Foto {imgIdx + 1}
+                          </span>
+                          <span className="grid h-6 w-6 place-items-center rounded-full bg-white/25 text-white backdrop-blur-sm">
+                            <ZoomIn size={13} />
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Footer de la tarjeta */}
+                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-white/60">
+                    <button
+                      type="button"
+                      onClick={() => setActiveLightbox({ project, imgIdx: 0 })}
+                      className="inline-flex items-center gap-1 text-[var(--brand-red)] font-semibold hover:underline cursor-pointer"
+                    >
+                      <ZoomIn size={13} /> Ver en detalle
+                    </button>
+                    <button
+                      type="button"
+                      onClick={openQuoteDialog}
+                      className="text-white/70 hover:text-white transition-colors cursor-pointer"
+                    >
+                      Cotizar similar →
+                    </button>
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
+
+        {/* Modal Lightbox */}
+        {activeLightbox && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Vista previa de fotos de proyectos"
+            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/92 backdrop-blur-md p-3 sm:p-6 animate-fade-in-slow"
+            onClick={() => setActiveLightbox(null)}
+          >
+            <div
+              className="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center bg-[#0F172A] border border-white/15 rounded-2xl p-4 sm:p-6 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Barra superior */}
+              <div className="w-full flex items-center justify-between pb-3 border-b border-white/10">
+                <div className="min-w-0 pr-4">
+                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[var(--brand-red)]">
+                    {activeLightbox.project.category}
+                  </span>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white truncate">
+                    {activeLightbox.project.name}
+                  </h3>
+                  <p className="text-xs text-white/60">
+                    Foto {activeLightbox.imgIdx + 1} de {activeLightbox.project.images.length}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveLightbox(null)}
+                  aria-label="Cerrar vista previa"
+                  className="shrink-0 grid h-10 w-10 place-items-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Contenedor imagen principal */}
+              <div className="relative mt-4 w-full flex-1 flex items-center justify-center min-h-[300px] max-h-[60vh] overflow-hidden rounded-xl bg-black/40">
+                <img
+                  src={activeLightbox.project.images[activeLightbox.imgIdx]}
+                  alt={`${activeLightbox.project.name} detalle ${activeLightbox.imgIdx + 1}`}
+                  className="max-h-[58vh] w-auto max-w-full object-contain rounded-lg"
+                />
+
+                {/* Flechas de navegación */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveLightbox((prev) => {
+                      if (!prev) return null;
+                      const newIdx =
+                        prev.imgIdx === 0
+                          ? prev.project.images.length - 1
+                          : prev.imgIdx - 1;
+                      return { ...prev, imgIdx: newIdx };
+                    })
+                  }
+                  aria-label="Foto anterior"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-black/70 hover:bg-black/90 text-white backdrop-blur-sm transition-all border border-white/20 cursor-pointer"
+                >
+                  <ChevronLeft size={22} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveLightbox((prev) => {
+                      if (!prev) return null;
+                      const newIdx =
+                        prev.imgIdx === prev.project.images.length - 1
+                          ? 0
+                          : prev.imgIdx + 1;
+                      return { ...prev, imgIdx: newIdx };
+                    })
+                  }
+                  aria-label="Siguiente foto"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-black/70 hover:bg-black/90 text-white backdrop-blur-sm transition-all border border-white/20 cursor-pointer"
+                >
+                  <ChevronRight size={22} />
+                </button>
+              </div>
+
+              {/* Tiras de miniaturas y botón CTA */}
+              <div className="mt-4 w-full flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10">
+                <div className="flex gap-2">
+                  {activeLightbox.project.images.map((thumb, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() =>
+                        setActiveLightbox((prev) =>
+                          prev ? { ...prev, imgIdx: idx } : null
+                        )
+                      }
+                      className={`h-14 w-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                        activeLightbox.imgIdx === idx
+                          ? "border-[var(--brand-red)] scale-105"
+                          : "border-transparent opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={thumb}
+                        alt="Miniatura"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveLightbox(null);
+                    openQuoteDialog();
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary-foreground hover:-translate-y-0.5 transition-all shadow-[var(--shadow-soft)] cursor-pointer"
+                >
+                  Cotizar uniformes para tu empresa <ArrowRight size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* PROCESO */}
@@ -486,9 +899,12 @@ function Index() {
                 {t("cta.quote")} <ArrowRight size={16} />
               </button>
               <a
-                href="#contacto"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
+                href="https://wa.me/573142961813?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20sobre%20los%20uniformes%20y%20dotaciones%20empresariales%20de%20Activa%20Uniformes."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10 transition-colors"
               >
+                <MessageCircle size={16} className="text-[#25D366]" />
                 {t("cta.advisor")}
               </a>
             </div>
@@ -537,10 +953,33 @@ function Index() {
               {t("footer.contact")}
             </h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-[var(--brand-red)]" /> +57 300 000 0000</li>
-              <li className="flex items-center gap-2.5"><MessageCircle size={14} className="shrink-0 text-[var(--brand-red)]" /> {t("footer.whatsapp")}</li>
-              <li className="flex items-center gap-2.5"><Mail size={14} className="shrink-0 text-[var(--brand-red)]" /> ventas@activauniformes.com</li>
-              <li className="flex items-start gap-2.5"><MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" /> {t("footer.location")}</li>
+              <li className="flex items-center gap-2.5">
+                <Phone size={14} className="shrink-0 text-[var(--brand-red)]" />
+                <a href="tel:+573142961813" className="hover:text-white transition-colors">
+                  +57 314 296 1813
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MessageCircle size={14} className="shrink-0 text-[#25D366]" />
+                <a
+                  href="https://wa.me/573142961813?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20sobre%20los%20uniformes%20y%20dotaciones%20empresariales%20de%20Activa%20Uniformes."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {t("footer.whatsapp")} (+57 314 296 1813)
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail size={14} className="shrink-0 text-[var(--brand-red)]" />
+                <a href="mailto:comercialuniformesactiva@gmail.com" className="hover:text-white transition-colors">
+                  comercialuniformesactiva@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <MapPin size={14} className="mt-1 shrink-0 text-[var(--brand-red)]" />
+                {t("footer.location")}
+              </li>
             </ul>
           </div>
 
@@ -550,16 +989,24 @@ function Index() {
             </h4>
             <div className="flex gap-3">
               {[
-                { I: Facebook, l: "Facebook" },
-                { I: Instagram, l: "Instagram" },
-                { I: Linkedin, l: "LinkedIn" },
-                { I: MessageCircle, l: "WhatsApp" },
-              ].map(({ I, l }) => (
+                {
+                  I: Facebook,
+                  l: "Facebook",
+                  h: "https://www.facebook.com/UniformesACTIVA/?locale=es_LA",
+                },
+                {
+                  I: Instagram,
+                  l: "Instagram",
+                  h: "https://www.instagram.com/uniformesactiva/?hl=es",
+                },
+              ].map(({ I, l, h }) => (
                 <a
                   key={l}
-                  href="#"
+                  href={h}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={l}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-primary hover:border-primary transition-all"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:bg-primary hover:border-primary transition-all text-white"
                 >
                   <I size={16} />
                 </a>

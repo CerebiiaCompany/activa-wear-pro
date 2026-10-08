@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Globe, Check, ChevronDown } from "lucide-react";
-import { COUNTRIES, useI18n } from "@/lib/i18n";
+import { LANGUAGES, useI18n } from "@/lib/i18n";
 
 export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
-  const { country, setCountry, t } = useI18n();
+  const { lang, setLang, currentLanguage, t } = useI18n();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -35,9 +35,9 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
         }`}
       >
         <Globe size={14} className="opacity-80" />
-        <span className="text-base leading-none">{country.flag}</span>
-        <span className="hidden sm:inline uppercase tracking-wider">
-          {country.code} · {country.lang.toUpperCase()}
+        <span className="text-base leading-none">{currentLanguage.flag}</span>
+        <span className="uppercase tracking-wider font-semibold">
+          {currentLanguage.code}
         </span>
         <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
@@ -45,40 +45,40 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
       {open && (
         <div
           role="listbox"
-          className="absolute right-0 z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-elegant)] animate-fade-in-slow"
+          className="absolute right-0 z-50 mt-2 w-52 max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-border bg-white shadow-[var(--shadow-elegant)] animate-fade-in-slow"
         >
-          <div className="px-4 py-2.5 border-b border-border">
+          <div className="px-4 py-2.5 border-b border-border bg-slate-50/80">
             <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
               {t("lang.choose")}
             </div>
           </div>
-          <ul className="max-h-80 overflow-y-auto py-1">
-            {COUNTRIES.map((c) => {
-              const selected = c.code === country.code;
+          <ul className="py-1">
+            {LANGUAGES.map((item) => {
+              const selected = item.code === lang;
               return (
-                <li key={c.code}>
+                <li key={item.code}>
                   <button
                     type="button"
                     role="option"
                     aria-selected={selected}
                     onClick={() => {
-                      setCountry(c.code);
+                      setLang(item.code);
                       setOpen(false);
                     }}
                     className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors ${
                       selected
-                        ? "bg-[var(--brand-light)] text-foreground"
+                        ? "bg-[var(--brand-light)] text-foreground font-semibold"
                         : "text-foreground/85 hover:bg-[var(--brand-light)]"
                     }`}
                   >
-                    <span className="text-xl leading-none">{c.flag}</span>
+                    <span className="text-xl leading-none">{item.flag}</span>
                     <span className="flex-1 truncate">
-                      <span className="font-medium">{c.name}</span>
+                      <span className="font-medium">{item.nativeName}</span>
                       <span className="ml-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {c.lang}
+                        {item.code}
                       </span>
                     </span>
-                    {selected && <Check size={14} className="text-[var(--brand-red)]" />}
+                    {selected && <Check size={14} className="text-[var(--brand-red)] shrink-0" />}
                   </button>
                 </li>
               );

@@ -1,6 +1,20 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type Lang = "es" | "en" | "pt";
+export type Lang = "es" | "en" | "fr" | "pt";
+
+export type LanguageOption = {
+  code: Lang;
+  name: string;
+  nativeName: string;
+  flag: string;
+};
+
+export const LANGUAGES: LanguageOption[] = [
+  { code: "es", name: "Español", nativeName: "Español", flag: "🇪🇸" },
+  { code: "en", name: "English", nativeName: "English", flag: "🇺🇸" },
+  { code: "fr", name: "Français", nativeName: "Français", flag: "🇫🇷" },
+  { code: "pt", name: "Português", nativeName: "Português", flag: "🇧🇷" },
+];
 
 export type Country = {
   code: string;
@@ -12,16 +26,17 @@ export type Country = {
 export const COUNTRIES: Country[] = [
   { code: "CO", name: "Colombia", flag: "🇨🇴", lang: "es" },
   { code: "MX", name: "México", flag: "🇲🇽", lang: "es" },
+  { code: "US", name: "United States", flag: "🇺🇸", lang: "en" },
+  { code: "ES", name: "España", flag: "🇪🇸", lang: "es" },
+  { code: "FR", name: "France", flag: "🇫🇷", lang: "fr" },
+  { code: "BR", name: "Brasil", flag: "🇧🇷", lang: "pt" },
+  { code: "PT", name: "Portugal", flag: "🇵🇹", lang: "pt" },
+  { code: "CA", name: "Canada", flag: "🇨🇦", lang: "en" },
   { code: "PA", name: "Panamá", flag: "🇵🇦", lang: "es" },
   { code: "EC", name: "Ecuador", flag: "🇪🇨", lang: "es" },
   { code: "PE", name: "Perú", flag: "🇵🇪", lang: "es" },
   { code: "CL", name: "Chile", flag: "🇨🇱", lang: "es" },
   { code: "CR", name: "Costa Rica", flag: "🇨🇷", lang: "es" },
-  { code: "ES", name: "España", flag: "🇪🇸", lang: "es" },
-  { code: "US", name: "United States", flag: "🇺🇸", lang: "en" },
-  { code: "CA", name: "Canada", flag: "🇨🇦", lang: "en" },
-  { code: "BR", name: "Brasil", flag: "🇧🇷", lang: "pt" },
-  { code: "PT", name: "Portugal", flag: "🇵🇹", lang: "pt" },
 ];
 
 type Dict = Record<string, string>;
@@ -67,6 +82,8 @@ const es: Dict = {
   "about.missionText": "\"Diseñamos y confeccionamos prendas de vestir de dotación empresarial que reflejan identidad, funcionalidad y estilo, con un compromiso firme por la calidad, la innovación y la cercanía con nuestros clientes.\"",
   "about.vision": "Visión",
   "about.visionText": "\"Ser para 2028 la marca de referencia en Colombia y la región en uniformes y dotaciones empresariales, reconocida por su calidad, innovación y compromiso con el cliente.\"",
+  "about.watchVideo": "Ver video de nuestra historia en YouTube",
+  "about.videoBadge": "Video de nuestra historia",
 
   "lines.kicker": "Líneas de Producción",
   "lines.title": "Una solución para cada sector.",
@@ -128,7 +145,7 @@ const es: Dict = {
   "ctaFinal.desc": "Diseñamos uniformes que fortalecen la identidad de tu empresa y proyectan profesionalismo.",
   "ctaFinal.b1": "Respuesta en 24h",
   "ctaFinal.b2": "Asesoría sin costo",
-  "ctaFinal.b3": "Cobertura nacional",
+  "ctaFinal.b3": "Cobertura nacional e internacional",
 
   "footer.tagline": "Diseño, confección y comercialización de uniformes empresariales y dotaciones corporativas. Vestimos tu equipo. Proyectamos tu grandeza.",
   "footer.nav": "Navegación",
@@ -140,7 +157,7 @@ const es: Dict = {
   "footer.designed": "Diseñado en Colombia · Proyectamos tu grandeza.",
 
   "lang.country": "País",
-  "lang.choose": "Elige tu país / idioma",
+  "lang.choose": "Elige tu idioma",
 
   "quote.title": "Solicitar Cotización",
   "quote.subtitle": "Cuéntanos sobre tu proyecto y te responderemos en menos de 24 horas.",
@@ -205,6 +222,8 @@ const en: Dict = {
   "about.missionText": "\"We design and manufacture corporate workwear that reflects identity, functionality and style, with a firm commitment to quality, innovation and closeness with our clients.\"",
   "about.vision": "Vision",
   "about.visionText": "\"To become, by 2028, the reference brand in Colombia and the region for corporate uniforms and workwear, recognized for our quality, innovation and client commitment.\"",
+  "about.watchVideo": "Watch our story video on YouTube",
+  "about.videoBadge": "Our story video",
 
   "lines.kicker": "Production Lines",
   "lines.title": "A solution for every sector.",
@@ -266,7 +285,7 @@ const en: Dict = {
   "ctaFinal.desc": "We design uniforms that strengthen your company's identity and project professionalism.",
   "ctaFinal.b1": "Reply within 24h",
   "ctaFinal.b2": "Free consultation",
-  "ctaFinal.b3": "International coverage",
+  "ctaFinal.b3": "National & international coverage",
 
   "footer.tagline": "Design, manufacturing and distribution of corporate uniforms and workwear. We dress your team. We project your greatness.",
   "footer.nav": "Navigation",
@@ -278,7 +297,7 @@ const en: Dict = {
   "footer.designed": "Designed in Colombia · We project your greatness.",
 
   "lang.country": "Country",
-  "lang.choose": "Choose your country / language",
+  "lang.choose": "Choose your language",
 
   "quote.title": "Request a Quote",
   "quote.subtitle": "Tell us about your project and we will reply within 24 hours.",
@@ -300,6 +319,146 @@ const en: Dict = {
   "quote.close": "Close",
   "quote.required": "Required field",
   "quote.privacy": "By submitting you agree that your data will only be used to reply to your request.",
+};
+
+const fr: Dict = {
+  "nav.home": "Accueil",
+  "nav.about": "À propos",
+  "nav.lines": "Lignes",
+  "nav.clients": "Clients",
+  "nav.projects": "Projets",
+  "nav.blog": "Blog",
+  "nav.contact": "Contact",
+  "cta.quote": "Demander un devis",
+  "cta.catalog": "Voir le catalogue",
+  "cta.advisor": "Contacter un conseiller",
+  "cta.viewAll": "Tout voir",
+  "cta.viewLine": "Voir la gamme",
+  "cta.viewDetails": "Voir les détails",
+  "menu.label": "Menu",
+
+  "hero.badge": "Uniformes d'entreprise haut de gamme",
+  "hero.title1": "Des uniformes d'entreprise qui",
+  "hero.titleHighlight": "renforcent l'identité",
+  "hero.title2": "de votre marque.",
+  "hero.desc": "Nous concevons et confectionnons des uniformes corporatifs qui allient image, fonctionnalité, confort et qualité pour les entreprises souhaitant projeter un grand professionnalisme.",
+  "hero.stat1": "Années d'expérience",
+  "hero.stat2": "Entreprises accompagnées",
+  "hero.stat3": "Production sur mesure",
+  "hero.stat4": "Couverture nationale et internationale",
+
+  "clients.title": "Les entreprises qui nous font confiance",
+
+  "about.kicker": "À propos",
+  "about.title": "Une trajectoire bâtie vêtement après vêtement.",
+  "about.desc": "Activa Uniformes est née du rêve de {founder}, une entrepreneure de Norte de Santander guidée par une vision d'avenir et un engagement indéfectible envers la qualité, le service et la proximité avec chaque client.",
+  "about.history": "Histoire",
+  "about.history.2008": "María de la Paz Parada commence son parcours entrepreneurial et se forme à la confection industrielle au SENA.",
+  "about.history.2010": "Quatre années d'expérience professionnelle et de formation continue, perfectionnant son savoir-faire et sa vision commerciale.",
+  "about.history.2014": "Lancement officiel d'Activa Uniformes, avec le soutien de sa famille et d'une équipe en pleine croissance.",
+  "about.history.today": "Aujourd'hui",
+  "about.history.todayText": "Entreprise reconnue dans le Norte de Santander pour sa qualité, sa ponctualité et son service personnalisé.",
+  "about.mission": "Mission",
+  "about.missionText": "\"Nous concevons et confectionnons des vêtements professionnels d'entreprise qui reflètent identité, fonctionnalité et style, avec un engagement constant envers la qualité, l'innovation et la proximité avec nos clients.\"",
+  "about.vision": "Vision",
+  "about.visionText": "\"Devenir d'ici 2028 la marque de référence en Colombie et dans la région pour les uniformes et dotations d'entreprise, reconnue pour sa qualité, son innovation et son engagement client.\"",
+  "about.watchVideo": "Regarder la vidéo de notre histoire sur YouTube",
+  "about.videoBadge": "Vidéo de notre histoire",
+
+  "lines.kicker": "Lignes de Production",
+  "lines.title": "Une solution pour chaque secteur.",
+  "lines.desc": "Des dotations administratives aux uniformes techniques spécialisés, nous développons chaque gamme avec photographie, design et confection dédiés.",
+  "line.admin": "Administratif",
+  "line.admin.desc": "Uniformes corporatifs et exécutifs.",
+  "line.polo": "Polos",
+  "line.polo.desc": "Vêtements d'entreprise décontractés.",
+  "line.vest": "Gilets",
+  "line.vest.desc": "Gilets opérationnels et corporatifs.",
+  "line.school": "Scolaire",
+  "line.school.desc": "Uniformes scolaires et institutionnels.",
+  "line.industrial": "Industriel",
+  "line.industrial.desc": "Dotations industrielles et de sécurité.",
+  "line.chef": "Restauration & Cuisine",
+  "line.chef.desc": "Uniformes gastronomiques et hôteliers.",
+  "line.health": "Santé & Beauté",
+  "line.health.desc": "Uniformes médicaux, cliniques, spas et centres esthétiques.",
+
+  "why.kicker": "Pourquoi nous choisir",
+  "why.title": "Derrière chaque uniforme, une promesse d'excellence.",
+  "value.commitment.t": "Engagement Client",
+  "value.commitment.d": "Nous plaçons le client au centre : nous écoutons, comprenons et répondons avec réactivité et proximité.",
+  "value.innovation.t": "Innovation & Amélioration Continue",
+  "value.innovation.d": "Nous défions le statu quo et cherchons sans cesse de nouvelles façons de perfectionner notre travail.",
+  "value.responsibility.t": "Responsabilité & Durabilité",
+  "value.responsibility.d": "Nous agissons de manière éthique envers nos communautés et notre environnement.",
+  "value.quality.t": "Qualité avec Engagement",
+  "value.quality.d": "Des normes élevées en matière de design, de matières et de confection pour des vêtements fonctionnels et durables.",
+  "value.team.t": "Travail d'Équipe",
+  "value.team.d": "Communication ouverte, respect et coopération : les meilleurs résultats se construisent ensemble.",
+  "value.passion.t": "Fierté & Passion de Servir",
+  "value.passion.d": "Nous aimons ce que nous faisons et sommes animés par le désir de valoriser l'identité de nos clients.",
+
+  "projects.kicker": "Projets",
+  "projects.title": "Des entreprises habillées avec fierté.",
+  "projects.desc": "Une sélection de projets où se rencontrent design, confection et identité de marque.",
+
+  "process.kicker": "Processus de travail",
+  "process.title": "Une méthode claire, de bout en bout.",
+  "process.s1.t": "Diagnostic",
+  "process.s1.d": "Nous analysons vos besoins.",
+  "process.s2.t": "Design",
+  "process.s2.d": "Nous concevons des propositions visuelles.",
+  "process.s3.t": "Production",
+  "process.s3.d": "Fabrication spécialisée.",
+  "process.s4.t": "Contrôle Qualité",
+  "process.s4.d": "Validation méticuleuse de chaque pièce.",
+  "process.s5.t": "Livraison",
+  "process.s5.d": "Expédition et accompagnement.",
+
+  "testimonials.kicker": "Témoignages",
+  "testimonials.title": "Ce que disent les entreprises que nous habillons.",
+
+  "blog.kicker": "Blog",
+  "blog.title": "Idées, tendances et savoir-faire textile.",
+
+  "ctaFinal.title": "Votre équipe mérite une image qui inspire confiance.",
+  "ctaFinal.desc": "Nous concevons des uniformes qui renforcent l'identité de votre entreprise et projettent votre professionnalisme.",
+  "ctaFinal.b1": "Réponse sous 24h",
+  "ctaFinal.b2": "Conseil sans frais",
+  "ctaFinal.b3": "Couverture nationale et internationale",
+
+  "footer.tagline": "Design, confection et commercialisation d'uniformes d'entreprise et dotations professionnelles. Nous habillons votre équipe. Nous projetons votre grandeur.",
+  "footer.nav": "Navigation",
+  "footer.contact": "Contact",
+  "footer.social": "Réseaux sociaux",
+  "footer.whatsapp": "WhatsApp 24/7",
+  "footer.location": "Cúcuta, Norte de Santander, Colombie",
+  "footer.rights": "Tous droits réservés.",
+  "footer.designed": "Conçu en Colombie · Nous projetons votre grandeur.",
+
+  "lang.country": "Pays",
+  "lang.choose": "Choisissez votre langue",
+
+  "quote.title": "Demander un devis",
+  "quote.subtitle": "Parlez-nous de votre projet et nous vous répondrons en moins de 24 heures.",
+  "quote.name": "Nom complet",
+  "quote.company": "Entreprise",
+  "quote.email": "Courrier électronique",
+  "quote.phone": "Téléphone / WhatsApp",
+  "quote.country": "Pays",
+  "quote.line": "Gamme d'intérêt",
+  "quote.linePlaceholder": "Sélectionnez une gamme",
+  "quote.qty": "Quantité approximative",
+  "quote.qtyPlaceholder": "Ex. 50 unités",
+  "quote.message": "Message",
+  "quote.messagePlaceholder": "Parlez-nous de votre projet, délais et besoins…",
+  "quote.submit": "Envoyer la demande",
+  "quote.sending": "Envoi en cours…",
+  "quote.success": "Demande envoyée !",
+  "quote.successDesc": "Un conseiller d'Activa Uniformes prendra contact avec vous très bientôt.",
+  "quote.close": "Fermer",
+  "quote.required": "Champ obligatoire",
+  "quote.privacy": "En envoyant, vous acceptez que vos données soient utilisées uniquement pour répondre à votre demande.",
 };
 
 const pt: Dict = {
@@ -343,6 +502,8 @@ const pt: Dict = {
   "about.missionText": "\"Desenhamos e confeccionamos peças de vestuário corporativo que refletem identidade, funcionalidade e estilo, com um compromisso firme com qualidade, inovação e proximidade com nossos clientes.\"",
   "about.vision": "Visão",
   "about.visionText": "\"Ser, até 2028, a marca de referência na Colômbia e na região em uniformes corporativos, reconhecida pela qualidade, inovação e compromisso com o cliente.\"",
+  "about.watchVideo": "Assistir ao vídeo da nossa história no YouTube",
+  "about.videoBadge": "Vídeo da nossa história",
 
   "lines.kicker": "Linhas de Produção",
   "lines.title": "Uma solução para cada setor.",
@@ -404,7 +565,7 @@ const pt: Dict = {
   "ctaFinal.desc": "Desenhamos uniformes que fortalecem a identidade da sua empresa e projetam profissionalismo.",
   "ctaFinal.b1": "Resposta em 24h",
   "ctaFinal.b2": "Consultoria sem custo",
-  "ctaFinal.b3": "Cobertura internacional",
+  "ctaFinal.b3": "Cobertura nacional e internacional",
 
   "footer.tagline": "Design, confecção e comercialização de uniformes corporativos. Vestimos sua equipe. Projetamos sua grandeza.",
   "footer.nav": "Navegação",
@@ -416,7 +577,7 @@ const pt: Dict = {
   "footer.designed": "Desenhado na Colômbia · Projetamos sua grandeza.",
 
   "lang.country": "País",
-  "lang.choose": "Escolha seu país / idioma",
+  "lang.choose": "Escolha seu idioma",
 
   "quote.title": "Solicitar Orçamento",
   "quote.subtitle": "Conte-nos sobre seu projeto e responderemos em até 24 horas.",
@@ -440,11 +601,13 @@ const pt: Dict = {
   "quote.privacy": "Ao enviar você concorda que seus dados serão usados apenas para responder sua solicitação.",
 };
 
-const DICTS: Record<Lang, Dict> = { es, en, pt };
+const DICTS: Record<Lang, Dict> = { es, en, fr, pt };
 
-type Ctx = {
-  country: Country;
+export type Ctx = {
   lang: Lang;
+  setLang: (lang: Lang) => void;
+  currentLanguage: LanguageOption;
+  country: Country;
   setCountry: (code: string) => void;
   t: (key: string, vars?: Record<string, string>) => string;
 };
@@ -452,31 +615,59 @@ type Ctx = {
 const I18nCtx = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [code, setCode] = useState<string>("CO");
+  const [lang, setLangState] = useState<Lang>("es");
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("activa.country");
-      if (saved && COUNTRIES.some((c) => c.code === saved)) setCode(saved);
+      const savedLang = localStorage.getItem("activa.lang") as Lang | null;
+      if (savedLang && (savedLang === "es" || savedLang === "en" || savedLang === "fr" || savedLang === "pt")) {
+        setLangState(savedLang);
+        return;
+      }
+      const savedCountry = localStorage.getItem("activa.country");
+      if (savedCountry) {
+        const found = COUNTRIES.find((c) => c.code === savedCountry);
+        if (found) {
+          setLangState(found.lang);
+        }
+      }
     } catch {}
   }, []);
 
-  const country = useMemo(
-    () => COUNTRIES.find((c) => c.code === code) ?? COUNTRIES[0],
-    [code]
+  const currentLanguage = useMemo(
+    () => LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0],
+    [lang]
   );
 
+  const country = useMemo(
+    () => COUNTRIES.find((c) => c.lang === lang) ?? COUNTRIES[0],
+    [lang]
+  );
+
+  const setLang = (newLang: Lang) => {
+    setLangState(newLang);
+    try {
+      localStorage.setItem("activa.lang", newLang);
+    } catch {}
+  };
+
+  const setCountry = (newCode: string) => {
+    const found = COUNTRIES.find((c) => c.code === newCode);
+    if (found) {
+      setLang(found.lang);
+    }
+    try {
+      localStorage.setItem("activa.country", newCode);
+    } catch {}
+  };
+
   const value = useMemo<Ctx>(() => {
-    const lang = country.lang;
     return {
-      country,
       lang,
-      setCountry: (newCode: string) => {
-        setCode(newCode);
-        try {
-          localStorage.setItem("activa.country", newCode);
-        } catch {}
-      },
+      setLang,
+      currentLanguage,
+      country,
+      setCountry,
       t: (key, vars) => {
         const dict = DICTS[lang] ?? es;
         let val = dict[key] ?? es[key] ?? key;
@@ -488,7 +679,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         return val;
       },
     };
-  }, [country]);
+  }, [lang, currentLanguage, country]);
 
   return <I18nCtx.Provider value={value}>{children}</I18nCtx.Provider>;
 }
@@ -498,8 +689,10 @@ export function useI18n(): Ctx {
   if (!ctx) {
     // Safe fallback so SSR / standalone use doesn't crash
     return {
-      country: COUNTRIES[0],
       lang: "es",
+      setLang: () => {},
+      currentLanguage: LANGUAGES[0],
+      country: COUNTRIES[0],
       setCountry: () => {},
       t: (key) => es[key] ?? key,
     };
