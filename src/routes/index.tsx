@@ -34,17 +34,18 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal, Counter } from "@/components/Reveal";
 import { useI18n } from "@/lib/i18n";
 import { openQuoteDialog } from "@/components/QuoteDialog";
+import { LineModal } from "@/components/LineModal";
 
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import cta from "@/assets/cta.jpg";
 import logo from "@/assets/logo.png";
-const lineAdmin = "/lineas/CATALOGO FINAL-03.jpg";
-const linePolo = "/lineas/CATALOGO FINAL-58.jpg";
-const lineVest = "/lineas/CATALOGO FINAL-97.jpg";
-const lineIndustrial = "/lineas/CATALOGO FINAL-36.jpg";
-const lineChef = "/lineas/CATALOGO FINAL-84.jpg";
-const lineHealth = "/lineas/CATALOGO FINAL-70.jpg";
+const lineAdmin = "/lineas/CATALOGO FINAL-03.webp";
+const linePolo = "/lineas/CATALOGO FINAL-58.webp";
+const lineVest = "/lineas/CATALOGO FINAL-97.webp";
+const lineIndustrial = "/lineas/CATALOGO FINAL-36.webp";
+const lineChef = "/lineas/CATALOGO FINAL-84.webp";
+const lineHealth = "/lineas/CATALOGO FINAL-70.webp";
 
 export interface ProjectItem {
   id: string;
@@ -68,28 +69,28 @@ export const PROJECTS_DATA: ProjectItem[] = [
     name: "AKT Motos",
     categoryGroup: "Automotriz & Transporte",
     category: "Automotriz & Comercial",
-    images: ["/AKT/_LEO0848.jpg", "/AKT/_LEO0970.jpg"],
+    images: ["/AKT/_LEO0848.webp", "/AKT/_LEO0970.webp"],
   },
   {
     id: "alcaldia",
     name: "Alcaldía de Cúcuta",
     categoryGroup: "Institucional & Salud",
     category: "Sector Público & Gobierno",
-    images: ["/Alcaldia/IMG_8284.jpg", "/Alcaldia/IMG_8285.jpg"],
+    images: ["/Alcaldia/IMG_8284.webp", "/Alcaldia/IMG_8285.webp"],
   },
   {
     id: "coomulpinort",
     name: "Coomulpinort",
     categoryGroup: "Automotriz & Transporte",
     category: "Cooperativa & Transporte",
-    images: ["/Coomulpinort/_LEO4390.jpg", "/Coomulpinort/activa_3.jpg"],
+    images: ["/Coomulpinort/_LEO4390.webp", "/Coomulpinort/_LEO4379.webp"],
   },
   {
     id: "cruz-roja",
     name: "Cruz Roja",
     categoryGroup: "Institucional & Salud",
     category: "Salud & Asistencia",
-    images: ["/Cruz%20roja/activa.jpg", "/Cruz%20roja/activa_2.jpg"],
+    images: ["/Cruz%20roja/activa.webp", "/Cruz%20roja/activa_2.webp"],
   },
   {
     id: "ct-shoes",
@@ -97,8 +98,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
     categoryGroup: "Comercial & Medios",
     category: "Retail & Calzado",
     images: [
-      "/CT%20Shoes/Mesa%20de%20trabajo%201.1.jpg",
-      "/CT%20Shoes/Mesa%20de%20trabajo%203.jpg",
+      "/CT%20Shoes/Mesa%20de%20trabajo%201.1.webp",
+      "/CT%20Shoes/Mesa%20de%20trabajo%203.webp",
     ],
   },
   {
@@ -107,8 +108,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
     categoryGroup: "Construcción & Industria",
     category: "Construcción & Desarrollo",
     images: [
-      "/Paisaje%20Urbano/_LEO0600.jpg",
-      "/Paisaje%20Urbano/_LEO0791.jpg",
+      "/Paisaje%20Urbano/_LEO0600.webp",
+      "/Paisaje%20Urbano/_LEO0791.webp",
     ],
   },
   {
@@ -116,38 +117,28 @@ export const PROJECTS_DATA: ProjectItem[] = [
     name: "Progar",
     categoryGroup: "Construcción & Industria",
     category: "Dotaciones Industriales",
-    images: ["/Progar/activa_28.jpg", "/Progar/cargo.jpg"],
+    images: ["/Progar/activa_28.webp", "/Progar/cargo.webp"],
   },
   {
     id: "rtc",
     name: "RTC",
     categoryGroup: "Comercial & Medios",
     category: "Telecomunicaciones",
-    images: ["/RTC/ACTIVAJULIO_26.jpg", "/RTC/ACTIVAJULIO_27.jpg"],
+    images: ["/RTC/ACTIVAJULIO_26.webp", "/RTC/ACTIVAJULIO_27.webp"],
   },
   {
     id: "seguridad",
     name: "Seguridad Privada",
     categoryGroup: "Construcción & Industria",
     category: "Vigilancia & Seguridad",
-    images: ["/Seguridad/_LEO0328.jpg", "/Seguridad/_LEO0353.jpg"],
+    images: ["/Seguridad/_LEO0328.webp", "/Seguridad/_LEO0353.webp"],
   },
   {
     id: "sena",
     name: "SENA",
     categoryGroup: "Institucional & Salud",
     category: "Educación & Formación",
-    images: ["/SENA/ACTIVAJULIO_5.jpg", "/SENA/ACTIVAJULIO_21.jpg"],
-  },
-  {
-    id: "sharick",
-    name: "Sharick Joyería",
-    categoryGroup: "Comercial & Medios",
-    category: "Comercial & Joyería",
-    images: [
-      "/Sharick%20Joyeria/Mesa%20de%20trabajo%206.jpg",
-      "/Sharick%20Joyeria/Mesa%20de%20trabajo%207.jpg",
-    ],
+    images: ["/SENA/ACTIVAJULIO_3.webp", "/SENA/ACTIVAJULIO_16.webp"],
   },
   {
     id: "taxis-libres",
@@ -155,8 +146,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
     categoryGroup: "Automotriz & Transporte",
     category: "Transporte Urbano",
     images: [
-      "/Taxis%20libres/activa_8.jpg",
-      "/Taxis%20libres/activa_10.jpg",
+      "/Taxis%20libres/activa_8.webp",
+      "/Taxis%20libres/activa_9.webp",
     ],
   },
   {
@@ -164,7 +155,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     name: "TV Norte",
     categoryGroup: "Comercial & Medios",
     category: "Medios & Televisión",
-    images: ["/TV%20Norte/ACTIVAJULIO_29.jpg", "/TV%20Norte/_LEO0122.jpg"],
+    images: ["/TV%20Norte/_LEO0210.webp", "/TV%20Norte/_LEO0122.webp"],
   },
 ];
 
@@ -228,6 +219,7 @@ function Index() {
   const { t } = useI18n();
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
+  const [selectedLineId, setSelectedLineId] = useState<string | null>(null);
   const [activeLightbox, setActiveLightbox] = useState<{
     project: ProjectItem;
     imgIdx: number;
@@ -273,12 +265,12 @@ function Index() {
       : PROJECTS_DATA.filter((p) => p.categoryGroup === selectedCategory);
 
   const lineas = [
-    { title: t("line.admin"), desc: t("line.admin.desc"), img: lineAdmin },
-    { title: t("line.polo"), desc: t("line.polo.desc"), img: linePolo },
-    { title: t("line.vest"), desc: t("line.vest.desc"), img: lineVest },
-    { title: t("line.industrial"), desc: t("line.industrial.desc"), img: lineIndustrial },
-    { title: t("line.chef"), desc: t("line.chef.desc"), img: lineChef },
-    { title: t("line.health"), desc: t("line.health.desc"), img: lineHealth },
+    { id: "admin", title: t("line.admin"), desc: t("line.admin.desc"), img: lineAdmin },
+    { id: "polo", title: t("line.polo"), desc: t("line.polo.desc"), img: linePolo },
+    { id: "vest", title: t("line.vest"), desc: t("line.vest.desc"), img: lineVest },
+    { id: "industrial", title: t("line.industrial"), desc: t("line.industrial.desc"), img: lineIndustrial },
+    { id: "chef", title: t("line.chef"), desc: t("line.chef.desc"), img: lineChef },
+    { id: "health", title: t("line.health"), desc: t("line.health.desc"), img: lineHealth },
   ];
 
   const benefits = [
@@ -510,7 +502,18 @@ function Index() {
           <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {lineas.map((l, i) => (
               <Reveal key={l.title} delay={i * 60}>
-                <article className="group relative h-full overflow-hidden rounded-2xl bg-slate-900 shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1.5">
+                <article
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setSelectedLineId(l.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedLineId(l.id);
+                    }
+                  }}
+                  className="group relative h-full overflow-hidden rounded-2xl bg-slate-900 shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1.5 cursor-pointer border border-transparent hover:border-[var(--brand-red)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
+                >
                   <div className="aspect-[1181/1654] overflow-hidden bg-slate-950">
                     <img
                       src={l.img}
@@ -519,12 +522,16 @@ function Index() {
                       className="h-full w-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/25 to-transparent opacity-90 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/30 to-transparent opacity-90 pointer-events-none" />
+
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                    <h3 className="font-display text-2xl font-bold text-white">{l.title}</h3>
+                    <h3 className="font-display text-2xl font-bold text-white group-hover:text-white transition-colors">
+                      {l.title}
+                    </h3>
                     <p className="mt-1 text-sm text-white/80 leading-snug">{l.desc}</p>
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-red)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      {t("cta.viewLine")} <ArrowRight size={14} />
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-red)] transition-all duration-300 group-hover:translate-x-1">
+                      <span>{t("cta.viewLine")}</span>
+                      <ArrowRight size={15} />
                     </div>
                   </div>
                 </article>
@@ -645,6 +652,7 @@ function Index() {
                           src={imgUrl}
                           alt={`${project.name} - Prenda ${imgIdx + 1}`}
                           loading="lazy"
+                          decoding="async"
                           className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-108"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end justify-between p-2.5">
@@ -723,6 +731,7 @@ function Index() {
                 <img
                   src={activeLightbox.project.images[activeLightbox.imgIdx]}
                   alt={`${activeLightbox.project.name} detalle ${activeLightbox.imgIdx + 1}`}
+                  decoding="async"
                   className="max-h-[58vh] w-auto max-w-full object-contain rounded-lg"
                 />
 
@@ -1021,6 +1030,12 @@ function Index() {
           </div>
         </div>
       </footer>
+
+      {/* MODAL DE DETALLE DE LÍNEA Y PRODUCTOS */}
+      <LineModal
+        lineId={selectedLineId}
+        onClose={() => setSelectedLineId(null)}
+      />
     </div>
   );
 }
